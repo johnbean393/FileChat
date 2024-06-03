@@ -1,12 +1,13 @@
 //
 //  Conversation+Extensions.swift
-//  Mantras
+//  FreeChat
 //
 //  Created by Peter Sugihara on 7/31/23.
 //
 
 import Foundation
 import CoreData
+import SimilaritySearchKit
 
 extension Conversation {
 	

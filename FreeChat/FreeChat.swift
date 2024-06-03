@@ -1,6 +1,6 @@
 //
-//  MantrasApp.swift
-//  Mantras
+//  FreeChatApp.swift
+//  FreeChat
 //
 //  Created by Peter Sugihara on 7/31/23.
 //
@@ -13,7 +13,8 @@ struct FreeChatApp: App {
 	
 	@NSApplicationDelegateAdaptor(FreeChatAppDelegate.self) private var appDelegate
 	@Environment(\.openWindow) var openWindow
-	@StateObject var conversationManager = ConversationManager.shared
+	@StateObject private var conversationManager = ConversationManager.shared
+	@StateObject private var indexStore: IndexStore = IndexStore.shared
 	
 	let persistenceController = PersistenceController.shared
 	
@@ -23,6 +24,7 @@ struct FreeChatApp: App {
 			ContentView()
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
 				.environmentObject(conversationManager)
+				.environmentObject(indexStore)
 				.onAppear {
 					NSWindow.allowsAutomaticWindowTabbing = false
 					let _ = NSApplication.shared.windows.map { $0.tabbingMode = .disallowed }

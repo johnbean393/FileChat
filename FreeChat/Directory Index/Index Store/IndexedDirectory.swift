@@ -1,11 +1,12 @@
 //
 //  IndexedDirectory.swift
-//  FileChat
+//  FreeChat
 //
 //  Created by Bean John on 30/5/2024.
 //
 
 import Foundation
+import AppKit
 import ExtensionKit
 import SimilaritySearchKit
 import SimilaritySearchKitDistilbert
@@ -27,7 +28,7 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 	public var url: URL
 	
 	/// Url of the directory where indexes are stored
-	private var indexUrl: URL {
+	public var indexUrl: URL {
 		return ContainerManager.indexesUrl.appendingPathComponent(id.uuidString)
 	}
 	
@@ -58,6 +59,21 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 		// Return index
 		return similarityIndex
 	}
+	
+	// Update index
+	public mutating func updateDirectoryIndex() async {
+		// Update for each file
+		let files: [URL] = (try? self.url.listDirectory()) ?? []
+		for file in files {
+			await self.indexFile(file: file)
+		}
+		// Filter for moved items
+		let tempIndexItems: [IndexItem] = indexItems.filter({ $0.wasMoved })
+		for index in tempIndexItems.indices {
+			tempIndexItems[index].deleteDirectory(parentDirUrl: indexUrl)
+		}
+		indexItems = indexItems.filter({ !$0.wasMoved })
+	}
 
 	/// Index a file
 	public mutating func indexFile(file: URL) async {
@@ -77,11 +93,13 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 	/// Add file to index
 	private mutating func addNewFileToIndex(url: URL) {
 		// Make new IndexItem
-		let indexItem: IndexItem = IndexItem(url: url)
+		let indexItem: IndexItem = IndexItem(url: url, prevIndexDate: Date.distantPast)
 		// Make directory
 		indexItem.createDirectory(parentDirUrl: indexUrl)
 		// Add to indexItems
 		indexItems.append(indexItem)
+		// Indicate change
+		print("Added new file at \"\(url.posixPath())\" to index.")
 	}
 	
 	/// Initialize directory
@@ -108,4 +126,8 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 		await setup()
 	}
 	
+	/// Show index directory
+	public func showIndexDirectory() {
+		NSWorkspace.shared.activateFileViewerSelecting([indexUrl])
+	}
 }

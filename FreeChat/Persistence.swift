@@ -1,6 +1,6 @@
 //
 //  Persistence.swift
-//  Mantras
+//  FreeChat
 //
 //  Created by Peter Sugihara on 7/31/23.
 //

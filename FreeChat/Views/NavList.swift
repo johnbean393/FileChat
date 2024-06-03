@@ -1,6 +1,6 @@
 //
 //  ConversationNavItem.swift
-//  Chats
+//  FreeChat
 //
 //  Created by Peter Sugihara on 8/5/23.
 //

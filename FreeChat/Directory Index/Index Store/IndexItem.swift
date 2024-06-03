@@ -1,6 +1,6 @@
 //
 //  IndexedItem.swift
-//  FileChat
+//  FreeChat
 //
 //  Created by Bean John on 30/5/2024.
 //
@@ -28,10 +28,28 @@ extension IndexedDirectory {
 			return !url.fileExists()
 		}
 		
+		/// Date of previous index
+		public var prevIndexDate: Date
+		
 		/// Function to create directory that houses the JSON file
 		public func createDirectory(parentDirUrl: URL) {
 			try! FileManager.default.createDirectory(at: parentDirUrl
 				.appendingPathComponent("\(id.uuidString)"), withIntermediateDirectories: true)
+		}
+		
+		/// Function to delete directory that houses the JSON file and its contents
+		public func deleteDirectory(parentDirUrl: URL) {
+			let indexUrl: URL = getIndexUrl(parentDirUrl: parentDirUrl)
+			print("indexUrl:", indexUrl.posixPath())
+			let dirUrl: URL = parentDirUrl.appendingPathComponent("\(id.uuidString)")
+			do {
+				try FileManager.default.removeItem(at: indexUrl)
+				try FileManager.default.removeItem(at: dirUrl)
+			} catch {
+				print("Remove error:", error)
+			}
+			// Indicate change
+			print("Removed file at \"\(self.url.posixPath())\" from index.")
 		}
 		
 		/// Function to get URL of index items JSON file's parent directory
@@ -43,7 +61,7 @@ extension IndexedDirectory {
 		/// Function to get URL of index items JSON file
 		private func getIndexUrl(parentDirUrl: URL) -> URL {
 			return getIndexDirUrl(parentDirUrl: parentDirUrl)
-				.appendingPathComponent("\(id.uuidString).json")
+				.appendingPathComponent("SimilaritySearchKitIndex.json")
 		}
 		
 		/// Function that returns index items in JSON file
@@ -70,6 +88,22 @@ extension IndexedDirectory {
 		
 		/// Function that re-scans the file, then saves the updated similarity index
 		public mutating func updateIndex(parentDirUrl: URL) async {
+			// Exit update if file was moved
+			if self.wasMoved {
+				// Delete index and its directory
+				deleteDirectory(parentDirUrl: parentDirUrl)
+				// Exit
+				return
+			}
+			// Exit update if last scanned after last modification
+			do {
+				let path: String = self.url.posixPath()
+				let attributes: [FileAttributeKey: Any] = try FileManager.default.attributesOfItem(atPath: path)
+				let modificationDate: Date = attributes[FileAttributeKey.modificationDate] as? Date ?? Date.distantFuture
+				if modificationDate < self.prevIndexDate {
+					return
+				}
+			} catch {  }
 			// Switch flag
 			indexState.startIndex()
 			// Extract text from file
@@ -95,6 +129,8 @@ extension IndexedDirectory {
 			saveIndex(parentDirUrl: parentDirUrl, similarityIndex: similarityIndex)
 			// Switch flag
 			indexState.finishIndex()
+			// Record last index date
+			self.prevIndexDate = Date.now
 		}
 		
 		/// The current indexing state, used to prevent duplicate indexes

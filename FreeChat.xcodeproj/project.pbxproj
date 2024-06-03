@@ -16,6 +16,8 @@
 		204242582C0D563100D173CF /* ExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = 204242572C0D563100D173CF /* ExtensionKit */; };
 		2042425A2C0D57A700D173CF /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204242592C0D57A700D173CF /* Extension+String.swift */; };
 		2042425E2C0D5BEE00D173CF /* AppleGPUInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 2042425D2C0D5BEE00D173CF /* AppleGPUInfo */; };
+		204242602C0D99D300D173CF /* IndexList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042425F2C0D99D300D173CF /* IndexList.swift */; };
+		204242632C0DB5C100D173CF /* BezelNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 204242622C0DB5C100D173CF /* BezelNotification */; };
 		A1156D312AD09FDD00081313 /* PromptTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */; };
 		A117219C2A7D7B70003B0358 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = A117219B2A7D7B70003B0358 /* MarkdownUI */; };
 		A12B52DE2AA5228100658707 /* EditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12B52DD2AA5228100658707 /* EditModels.swift */; };
@@ -129,6 +131,7 @@
 		204242482C0D534C00D173CF /* IndexStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexStore.swift; sourceTree = "<group>"; };
 		2042424A2C0D534C00D173CF /* ContainerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerManager.swift; sourceTree = "<group>"; };
 		204242592C0D57A700D173CF /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		2042425F2C0D99D300D173CF /* IndexList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexList.swift; sourceTree = "<group>"; };
 		A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTemplateTests.swift; sourceTree = "<group>"; };
 		A12B52DD2AA5228100658707 /* EditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModels.swift; sourceTree = "<group>"; };
 		A12B52E32AA5A99E00658707 /* EditSystemPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSystemPrompt.swift; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 				A117219C2A7D7B70003B0358 /* MarkdownUI in Frameworks */,
 				2042425E2C0D5BEE00D173CF /* AppleGPUInfo in Frameworks */,
 				A13C8C5D2A8FEF0600EC18D8 /* Splash in Frameworks */,
+				204242632C0DB5C100D173CF /* BezelNotification in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,11 +295,12 @@
 		A19AA51F2AA66768009D9573 /* ConversationView */ = {
 			isa = PBXGroup;
 			children = (
-				A1A286E72A7D8A7D0004967A /* MessageView.swift */,
 				A1F617552A782E4F00F2048C /* ConversationView.swift */,
-				A15D50CE2A7EF73E00FC1681 /* MessageTextField.swift */,
+				A1A286E72A7D8A7D0004967A /* MessageView.swift */,
 				A19AA5212AA667BE009D9573 /* QuickPromptButton.swift */,
 				A137A37B2AB3D26C00BE1AE0 /* ObservableScrollView.swift */,
+				A15D50CE2A7EF73E00FC1681 /* MessageTextField.swift */,
+				2042425F2C0D99D300D173CF /* IndexList.swift */,
 			);
 			path = ConversationView;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				204242532C0D54AA00D173CF /* SimilaritySearchKitDistilbert */,
 				204242572C0D563100D173CF /* ExtensionKit */,
 				2042425D2C0D5BEE00D173CF /* AppleGPUInfo */,
+				204242622C0DB5C100D173CF /* BezelNotification */,
 			);
 			productName = Mantras;
 			productReference = A1F617222A782AA100F2048C /* FreeChat.app */;
@@ -532,6 +538,7 @@
 				204242502C0D54AA00D173CF /* XCRemoteSwiftPackageReference "similarity-search-kit" */,
 				204242562C0D563100D173CF /* XCRemoteSwiftPackageReference "ExtensionKit" */,
 				2042425C2C0D5BEE00D173CF /* XCRemoteSwiftPackageReference "applegpuinfo" */,
+				204242612C0DB5C100D173CF /* XCRemoteSwiftPackageReference "BezelNotification" */,
 			);
 			productRefGroup = A1F617232A782AA100F2048C /* Products */;
 			projectDirPath = "";
@@ -588,6 +595,7 @@
 				A137A38E2AB6B52400BE1AE0 /* Constants.swift in Sources */,
 				2042424D2C0D534C00D173CF /* IndexItem.swift in Sources */,
 				A18A8BB52B24FC0F00D2197C /* UISettingsView.swift in Sources */,
+				204242602C0D99D300D173CF /* IndexList.swift in Sources */,
 				A13C8C602A8FF03800EC18D8 /* TextOutputFormat.swift in Sources */,
 				2042424C2C0D534C00D173CF /* IndexedDirectory.swift in Sources */,
 				A1F6175B2A7838F700F2048C /* Conversation+Extensions.swift in Sources */,
@@ -679,7 +687,7 @@
 				DEVELOPMENT_TEAM = KM2C4ZAVPJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				OTHER_CODE_SIGN_FLAGS = "$(inherited) -i $(PRODUCT_BUNDLE_IDENTIFIER)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.npc-pet.Chats.watchdog";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.Chats.watchdog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -695,7 +703,7 @@
 				DEVELOPMENT_TEAM = KM2C4ZAVPJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				OTHER_CODE_SIGN_FLAGS = "$(inherited) -i $(PRODUCT_BUNDLE_IDENTIFIER)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.npc-pet.Chats.watchdog";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.Chats.watchdog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -849,7 +857,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0.8;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.npc-pet.Chats";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.FreeChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -886,7 +894,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0.8;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.npc-pet.Chats";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.FreeChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1050,6 +1058,14 @@
 				kind = branch;
 			};
 		};
+		204242612C0DB5C100D173CF /* XCRemoteSwiftPackageReference "BezelNotification" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yalir/BezelNotification.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		A117219A2A7D7B70003B0358 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
@@ -1104,6 +1120,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2042425C2C0D5BEE00D173CF /* XCRemoteSwiftPackageReference "applegpuinfo" */;
 			productName = AppleGPUInfo;
+		};
+		204242622C0DB5C100D173CF /* BezelNotification */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204242612C0DB5C100D173CF /* XCRemoteSwiftPackageReference "BezelNotification" */;
+			productName = BezelNotification;
 		};
 		A117219B2A7D7B70003B0358 /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;

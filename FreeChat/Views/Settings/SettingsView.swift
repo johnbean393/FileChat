@@ -1,6 +1,6 @@
 //
 //  SettingsView.swift
-//  Chats
+//  FreeChat
 //
 //  Created by Peter Sugihara on 8/6/23.
 //

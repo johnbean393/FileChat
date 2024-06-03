@@ -1,5 +1,5 @@
 {
-  "originHash" : "dc9301d14092d851f83b30525a846822f7ece8111c22200a8bc424d712f391e6",
+  "originHash" : "f85d31332c0c0298938720c42370e54bee45490ba8f63d42a28e641eebdf6f26",
   "pins" : [
     {
       "identity" : "applegpuinfo",
@@ -8,6 +8,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "cedd7526078d58d4a98cc170d4df5d9eaa8f1a99"
+      }
+    },
+    {
+      "identity" : "bezelnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Yalir/BezelNotification.git",
+      "state" : {
+        "revision" : "68876d0e8c0ad09e0a1be8e7124b4f6c738df2c9",
+        "version" : "1.1.0"
       }
     },
     {

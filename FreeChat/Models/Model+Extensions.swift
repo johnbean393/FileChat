@@ -1,6 +1,6 @@
 //
 //  Model+Extensions.swift
-//  Chats
+//  FreeChat
 //
 //  Created by Peter Sugihara on 8/8/23.
 //
