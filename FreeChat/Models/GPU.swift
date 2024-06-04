@@ -1,6 +1,6 @@
 //
 //  GPU.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 12/16/23.
 //

@@ -1,11 +1,11 @@
 //
-//  FreeChatAppDelegate.swift
-//  FreeChat
+//  FileChatAppDelegate.swift
+//  FileChat
 //
 
 import SwiftUI
 
-class FreeChatAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
+class FileChatAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 	
 	@AppStorage("selectedModelId") private var selectedModelId: String?
 	

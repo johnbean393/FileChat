@@ -1,6 +1,6 @@
 //
 //  IndexedItem.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Bean John on 30/5/2024.
 //
@@ -65,7 +65,7 @@ extension IndexedDirectory {
 		}
 		
 		/// Function that returns index items in JSON file
-		public func getIndexItems(parentDirUrl: URL) async -> [SimilarityIndex.IndexItem] {
+		public func getIndexItems(parentDirUrl: URL, taskId: UUID, taskCount: Int) async -> [SimilarityIndex.IndexItem] {
 			// Init index
 			let similarityIndex: SimilarityIndex = await SimilarityIndex(
 				model: DistilbertEmbeddings(),
@@ -77,6 +77,8 @@ extension IndexedDirectory {
 			let indexItems: [SimilarityIndex.IndexItem] = (
 				try? similarityIndex.loadIndex(fromDirectory: indexUrl) ?? []
 			) ?? []
+			// Increment tasks
+			LengthyTasksController.shared.incrementTask(id: taskId, newProgress: Double(1 / taskCount))
 			// Return index
 			return indexItems
 		}
@@ -87,7 +89,7 @@ extension IndexedDirectory {
 		}
 		
 		/// Function that re-scans the file, then saves the updated similarity index
-		public mutating func updateIndex(parentDirUrl: URL) async {
+		public mutating func updateIndex(parentDirUrl: URL, taskId: UUID, taskCount: Int) async {
 			// Exit update if file was moved
 			if self.wasMoved {
 				// Delete index and its directory
@@ -119,7 +121,7 @@ extension IndexedDirectory {
 			for (index, splitText) in splitTexts.enumerated() {
 				let indexItemId: String = "\(id.uuidString)_\(index)"
 				let filename: String = url.lastPathComponent
-				async let _ = similarityIndex.addItem(
+				await similarityIndex.addItem(
 					id: indexItemId,
 					text: splitText,
 					metadata: ["Source": "\(filename)"]
@@ -131,6 +133,8 @@ extension IndexedDirectory {
 			indexState.finishIndex()
 			// Record last index date
 			self.prevIndexDate = Date.now
+			// Increment task
+			LengthyTasksController.shared.incrementTask(id: id, newProgress: Double(1 / taskCount))
 		}
 		
 		/// The current indexing state, used to prevent duplicate indexes

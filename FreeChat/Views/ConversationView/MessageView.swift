@@ -1,6 +1,6 @@
 //
 //  MessageView.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 8/4/23.
 //
@@ -149,8 +149,14 @@ struct MessageView: View {
 	var body: some View {
 		HStack(alignment: .top) {
 			ZStack(alignment: .bottomTrailing) {
-				Image(m.fromId == Message.USER_SPEAKER_ID ? "UserAvatar" : "LlamaAvatar")
+				Image(systemName: m.fromId == Message.USER_SPEAKER_ID ? "person.fill" : "cpu.fill")
+					.font(.system(size: 17))
 					.shadow(color: .secondary.opacity(0.3), radius: 2, x: 0, y: 0.5)
+					.padding(5)
+					.background(
+						Circle()
+							.fill(m.fromId == Message.USER_SPEAKER_ID ? Color.purple : Color.green)
+					)
 				if agentStatus == .coldProcessing || agentStatus == .processing {
 					ZStack {
 						Circle()
@@ -194,7 +200,7 @@ struct MessageView: View {
 						Text(messageText)
 					} else {
 						Markdown(messageText)
-							.markdownTheme(.freeChat)
+							.markdownTheme(.fileChat)
 							.markdownCodeSyntaxHighlighter(.splash(theme: self.theme))
 					}
 				}

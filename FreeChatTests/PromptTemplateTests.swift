@@ -1,12 +1,12 @@
 //
 //  PromptTemplateTests.swift
-//  FreeChatTests
+//  FileChatTests
 //
 //  Created by Peter Sugihara on 10/6/23.
 //
 
 import XCTest
-@testable import FreeChat
+@testable import FileChat
 
 final class PromptTemplateTests: XCTestCase {
   var shortConvo: [String] = [

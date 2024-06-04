@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 7/31/23.
 //
@@ -102,7 +102,7 @@ struct ContentView: View {
 		setInitialSelection = true
 		
 		if !conversationManager.summonRegistered {
-			KeyboardShortcuts.onKeyUp(for: .summonFreeChat) {
+			KeyboardShortcuts.onKeyUp(for: .summonFileChat) {
 				NSApp.activate(ignoringOtherApps: true)
 				conversationManager.newConversation(viewContext: viewContext, openWindow: openWindow)
 			}

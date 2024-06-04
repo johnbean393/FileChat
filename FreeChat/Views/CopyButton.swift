@@ -1,6 +1,6 @@
 //
 //  CopyButton.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 8/18/23.
 //

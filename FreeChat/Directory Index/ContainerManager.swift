@@ -1,6 +1,6 @@
 //
 //  ContainerManager.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Bean John on 30/5/2024.
 //
@@ -11,7 +11,7 @@ class ContainerManager {
 	
 	static let containerUrl: URL = URL
 		.applicationSupportDirectory
-		.appendingPathComponent("FreeChat")
+		.appendingPathComponent("FileChat")
 	
 	static let indexesUrl: URL = ContainerManager
 		.containerUrl

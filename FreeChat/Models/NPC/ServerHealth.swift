@@ -1,6 +1,6 @@
 //
 //  ServerHealth.swift
-//  FreeChat
+//  FileChat
 //
 
 import Foundation

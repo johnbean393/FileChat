@@ -1,6 +1,6 @@
 //
 //  Model+Extensions.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 8/8/23.
 //
@@ -26,7 +26,7 @@ enum ModelCreateError: LocalizedError {
 extension Model {
 	@available(*, deprecated, message: "use nil instead")
 	static let unsetModelId = "unset"
-	static let defaultModelUrl = URL(string: "https://huggingface.co/cognitivecomputations/dolphin-2.9-llama3-8b-gguf?show_file_info=dolphin-2.9-llama3-8b-q6_K.gguf")!
+	static let defaultModelUrl = URL(string: "https://huggingface.co/QuantFactory/Meta-Llama-3-8B-Instruct-GGUF/blob/main/Meta-Llama-3-8B-Instruct.Q6_K.gguf")!
 	
 	var url: URL? {
 		if bookmark == nil { return nil }

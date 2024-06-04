@@ -1,6 +1,6 @@
 //
-//  FreeChatApp.swift
-//  FreeChat
+//  FileChatApp.swift
+//  FileChat
 //
 //  Created by Peter Sugihara on 7/31/23.
 //
@@ -9,22 +9,24 @@ import SwiftUI
 import KeyboardShortcuts
 
 @main
-struct FreeChatApp: App {
+struct FileChatApp: App {
 	
-	@NSApplicationDelegateAdaptor(FreeChatAppDelegate.self) private var appDelegate
+	@NSApplicationDelegateAdaptor(FileChatAppDelegate.self) private var appDelegate
 	@Environment(\.openWindow) var openWindow
 	@StateObject private var conversationManager = ConversationManager.shared
 	@StateObject private var indexStore: IndexStore = IndexStore.shared
+	@StateObject private var lengthyTasksController: LengthyTasksController = LengthyTasksController.shared
 	
 	let persistenceController = PersistenceController.shared
 	
 	var body: some Scene {
 		
-		Window(Text("FreeChat"), id: "main") {
+		Window(Text("FileChat"), id: "main") {
 			ContentView()
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
 				.environmentObject(conversationManager)
 				.environmentObject(indexStore)
+				.environmentObject(lengthyTasksController)
 				.onAppear {
 					NSWindow.allowsAutomaticWindowTabbing = false
 					let _ = NSApplication.shared.windows.map { $0.tabbingMode = .disallowed }

@@ -1,6 +1,6 @@
 //
 //  DownloadManager.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 9/28/23.
 //
@@ -70,7 +70,7 @@ extension DownloadManager: URLSessionDelegate, URLSessionDownloadDelegate {
 		
 		// move file to app resources
 		let fileName = downloadTask.originalRequest?.url?.lastPathComponent ?? "default.gguf"
-		let folderName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "FreeChat"
+		let folderName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "FileChat"
 		let destDir = URL.applicationSupportDirectory.appending(path: folderName, directoryHint: .isDirectory)
 		let destinationURL = destDir.appending(path: fileName)
 		

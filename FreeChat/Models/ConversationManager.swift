@@ -1,6 +1,6 @@
 //
 //  ConversationManager.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 9/11/23.
 //
@@ -40,7 +40,7 @@ class ConversationManager: ObservableObject {
 	
 	func bringConversationToFront(openWindow: OpenWindowAction) {
 		// bring conversation window to front
-		if let conversationWindow = NSApp.windows.first(where: { $0.title == currentConversation.titleWithDefault || $0.title == "FreeChat" }) {
+		if let conversationWindow = NSApp.windows.first(where: { $0.title == currentConversation.titleWithDefault || $0.title == "FileChat" }) {
 			conversationWindow.makeKeyAndOrderFront(self)
 		} else {
 			// conversation window is not open, so open it

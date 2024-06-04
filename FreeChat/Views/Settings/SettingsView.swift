@@ -1,6 +1,6 @@
 //
 //  SettingsView.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 8/6/23.
 //

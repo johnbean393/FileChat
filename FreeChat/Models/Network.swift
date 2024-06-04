@@ -1,6 +1,6 @@
 //
 //  Network.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 11/27/23.
 //

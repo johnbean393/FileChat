@@ -1,6 +1,6 @@
 //
-//  Theme+FreeChat.swift
-//  FreeChat
+//  Theme+FileChat.swift
+//  FileChat
 //
 //  Created by Peter Sugihara on 8/18/23.
 //
@@ -22,7 +22,7 @@ extension Theme {
 	/// Bulleted list | ![](GitHubNestedBulletedList)
 	/// Numbered list | ![](GitHubNumberedList)
 	/// Table | ![](GitHubTable)
-	public static let freeChat = Theme()
+	public static let fileChat = Theme()
 		.text {
 			ForegroundColor(.text)
 			BackgroundColor(.background)

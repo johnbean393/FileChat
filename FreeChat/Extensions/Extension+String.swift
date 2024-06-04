@@ -1,6 +1,6 @@
 //
 //  Extension+String.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Bean John on 3/6/2024.
 //

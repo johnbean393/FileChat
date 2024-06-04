@@ -1,13 +1,13 @@
 //
-//  FreeChatUITestsLaunchTests.swift
-//  FreeChatUITests
+//  FileChatUITestsLaunchTests.swift
+//  FileChatUITests
 //
 //  Created by Peter Sugihara on 7/31/23.
 //
 
 import XCTest
 
-final class FreeChatUITestsLaunchTests: XCTestCase {
+final class FileChatUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

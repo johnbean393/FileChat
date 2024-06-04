@@ -1,6 +1,6 @@
 //
 //  IndexStore.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Bean John on 30/5/2024.
 //
@@ -46,7 +46,7 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 				await similarityIndex = selectedDirectory!.loadIndex()
 				isLoadingIndex = false
 				await MainActor.run {
-					let notification: BezelNotification = BezelNotification(text: "FreeChat has finished loading your folder", visibleTime: 2)
+					let notification: BezelNotification = BezelNotification(text: "FileChat has finished loading your folder", visibleTime: 2)
 					notification.show()
 				}
 			}
@@ -83,11 +83,15 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 			saveSelectedDirectory()
 		}
 		await MainActor.run {
-			let notification: BezelNotification = BezelNotification(text: "FreeChat has finished updating the folder's index. It will now be loaded into memory.", visibleTime: 2)
+			let notification: BezelNotification = BezelNotification(text: "FileChat has finished updating the folder's index. It will now be loaded into memory.", visibleTime: 2)
 			notification.show()
 			loadSimilarityIndex()
 		}
 		isLoadingIndex = false
+	}
+	
+	func loadAllIndexesIntoCache() {
+		
 	}
 	
 }

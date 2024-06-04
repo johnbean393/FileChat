@@ -1,6 +1,6 @@
 //
 //  CustomizeModelsView.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 9/3/23.
 //

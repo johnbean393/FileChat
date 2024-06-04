@@ -1,6 +1,6 @@
 //
 //  AISettingsView.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 12/9/23.
 //
@@ -139,7 +139,7 @@ struct AISettingsView: View {
 
       if !editRemoteModel {
         Text(
-          "The default model is general purpose, small, and works on most computers. Larger models are slower but wiser. Some models specialize in certain tasks like coding Python. FreeChat is compatible with most models in GGUF format. [Find new models](https://huggingface.co/models?search=GGUF)"
+          "The default model is general purpose, small, and works on most computers. Larger models are slower but wiser. Some models specialize in certain tasks like coding Python. FileChat is compatible with most models in the GGUF format. [Find new models](https://huggingface.co/models?search=GGUF)"
         )
         .font(.callout)
         .foregroundColor(Color(NSColor.secondaryLabelColor))

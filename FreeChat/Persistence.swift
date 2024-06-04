@@ -1,6 +1,6 @@
 //
 //  Persistence.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 7/31/23.
 //

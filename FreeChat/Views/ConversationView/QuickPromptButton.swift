@@ -1,6 +1,6 @@
 //
 //  QuickPromptButton.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 9/4/23.
 //

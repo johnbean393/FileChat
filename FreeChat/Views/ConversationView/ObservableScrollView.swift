@@ -1,6 +1,6 @@
 //
 //  ObservableScrollView.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 9/14/23.
 //  adapted from https://swiftuirecipes.com/blog/swiftui-scrollview-scroll-offset

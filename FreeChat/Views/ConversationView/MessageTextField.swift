@@ -1,6 +1,6 @@
 //
 //  MessageTextField.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 8/5/23.
 //
@@ -65,7 +65,7 @@ struct MessageTextField: View {
 
 	var buttonImage: some View {
 		let angle: Double = isSelectingIndex ? -90 : 90
-		return Image(systemName: "chevron.left.2").rotationEffect(Angle(degrees: angle))
+		return Image(systemName: "chevron.left.2").rotationEffect(Angle(degrees: angle)).background(Color.clear)
 	}
 	
 	@State private var selectedDir: IndexedDirectory? = nil
@@ -88,7 +88,7 @@ struct MessageTextField: View {
 					if CGKeyCode.kVK_Shift.isPressed {
 						input += "\n"
 					} else if indexStore.isLoadingIndex {
-						let notification: BezelNotification = BezelNotification(text: "FreeChat is currently loading a folder, please wait before sending a message.", visibleTime: 2)
+						let notification: BezelNotification = BezelNotification(text: "FileChat is currently loading a folder, please wait before sending a message.", visibleTime: 2)
 						notification.show()
 					} else if input.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
 						onSubmit(input)
@@ -102,14 +102,14 @@ struct MessageTextField: View {
 				.onAppear {
 					self.focused = true
 				}
-				.onChange(of: conversation) {
+				.onChange(of: conversation) { _ in
 					if conversationManager.showConversation() {
 						self.focused = true
 						QuickPromptButton.quickPrompts.shuffle()
 					}
 				}
-				.onChange(of: selectedDir) { oldValue, newValue in
-					IndexStore.shared.selectedDirectory = newValue
+				.onChange(of: selectedDir) { _ in
+					IndexStore.shared.selectedDirectory = selectedDir
 				}
 		}
 		
@@ -127,8 +127,9 @@ struct MessageTextField: View {
 			if isSelectingIndex {
 				indexSelectionPanel
 			}
-			HStack(spacing: 0) {
+			HStack {
 				inputField
+				LengthyTasksView()
 				togglePanelButton
 			}
 		}

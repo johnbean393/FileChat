@@ -1,6 +1,6 @@
 //
 //  UISettingsView.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 12/9/23.
 //
@@ -18,7 +18,7 @@ struct UISettingsView: View {
   @AppStorage("showFeedbackButtons") private var showFeedbackButtons = true
 
   var globalHotkey: some View {
-    KeyboardShortcuts.Recorder("Summon chat", name: .summonFreeChat)
+    KeyboardShortcuts.Recorder("Summon chat", name: .summonFileChat)
   }
 
   var soundEffects: some View {

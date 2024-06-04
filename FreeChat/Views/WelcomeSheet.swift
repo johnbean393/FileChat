@@ -1,6 +1,6 @@
 //
 //  WelcomeSheet.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 9/28/23.
 //
@@ -26,11 +26,11 @@ struct WelcomeSheet: View {
     VStack {
       if models.count == 0 {
         Image(nsImage: NSImage(named: "AppIcon") ?? NSImage())
-        Text("Welcome to FreeChat").font(.largeTitle)
+        Text("Welcome to FileChat").font(.largeTitle)
 
         Text("Download a model to get started")
           .font(.title3)
-        Text("FreeChat runs AI locally on your Mac for maximum privacy and security. You can chat with different AI models, which vary in terms of training data and knowledge base.\n\nThe default model is general purpose, small, and works on most computers. Larger models are slower but wiser. Some models specialize in certain tasks like coding Python. FreeChat is compatible with most models in GGUF format. [Find new models](https://huggingface.co/models?search=GGUF)")
+        Text("FileChat runs AI locally on your Mac for maximum privacy and security. You can chat with different AI models, which vary in terms of training data and knowledge base.\n\nThe default model is general purpose, small, and works on most computers. Larger models are slower but wiser. Some models specialize in certain tasks like coding Python. FileChat is compatible with most models in the GGUF format. [Find new models](https://huggingface.co/models?search=GGUF)")
           .font(.callout)
           .lineLimit(10)
           .fixedSize(horizontal: false, vertical: true)
@@ -65,7 +65,7 @@ struct WelcomeSheet: View {
         Button(action: downloadDefault) {
           HStack {
             Text("Download default model")
-            Text("4.02 GB").foregroundStyle(.white.opacity(0.7))
+            Text("6.6 GB").foregroundStyle(.white.opacity(0.7))
           }.padding(.horizontal, 20)
         }
         .keyboardShortcut(.defaultAction)

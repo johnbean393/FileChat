@@ -1,6 +1,6 @@
 //
 //  CircleButtonStyle.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Peter Sugihara on 9/20/23.
 //

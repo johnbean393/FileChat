@@ -1,6 +1,6 @@
 //
 //  IndexedDirectory.swift
-//  FreeChat
+//  FileChat
 //
 //  Created by Bean John on 30/5/2024.
 //
@@ -53,9 +53,11 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 			metric: DotProduct()
 		)
 		// Load index items
+		let task: LengthyTask = LengthyTasksController.shared.addTask(name: "Loading \"\(url.lastPathComponent)\" Folder", progress: 0.0)
 		for indexItem in indexItems {
-			await similarityIndex.indexItems += indexItem.getIndexItems(parentDirUrl: indexUrl)
+			await similarityIndex.indexItems += indexItem.getIndexItems(parentDirUrl: indexUrl, taskId: task.id, taskCount: indexItems.count)
 		}
+		LengthyTasksController.shared.removeTask(id: task.id)
 		// Return index
 		return similarityIndex
 	}
@@ -64,8 +66,9 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 	public mutating func updateDirectoryIndex() async {
 		// Update for each file
 		let files: [URL] = (try? self.url.listDirectory()) ?? []
+		let task: LengthyTask = LengthyTasksController.shared.addTask(name: "Loading \"\(url.lastPathComponent)\" Folder Index", progress: 0.0)
 		for file in files {
-			await self.indexFile(file: file)
+			await self.indexFile(file: file, taskId: task.id, taskCount: indexItems.count)
 		}
 		// Filter for moved items
 		let tempIndexItems: [IndexItem] = indexItems.filter({ $0.wasMoved })
@@ -73,10 +76,11 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 			tempIndexItems[index].deleteDirectory(parentDirUrl: indexUrl)
 		}
 		indexItems = indexItems.filter({ !$0.wasMoved })
+		LengthyTasksController.shared.removeTask(id: task.id)
 	}
 
 	/// Index a file
-	public mutating func indexFile(file: URL) async {
+	public mutating func indexFile(file: URL, taskId: UUID, taskCount: Int) async {
 		// Check if new file
 		let isNewFile: Bool = !(indexItems.map({ $0.url }).contains(file))
 		// If yes, add file to indexedItems
@@ -84,7 +88,7 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 		// Call updateIndex function
 		for currIndex in indexItems.indices {
 			if indexItems[currIndex].url == file {
-				await indexItems[currIndex].updateIndex(parentDirUrl: indexUrl)
+				await indexItems[currIndex].updateIndex(parentDirUrl: indexUrl, taskId: taskId, taskCount: taskCount)
 				break
 			}
 		}
@@ -110,10 +114,12 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 		for currFile in (try! url.listDirectory()) {
 			addNewFileToIndex(url: currFile)
 		}
+		let task: LengthyTask = LengthyTasksController.shared.addTask(name: "Setting up \"\(url.lastPathComponent)\" Folder", progress: 0.0)
 		for currIndex in indexItems.indices {
 			let selfIndexUrl: URL = indexUrl
-			await indexItems[currIndex].updateIndex(parentDirUrl: selfIndexUrl)
+			await indexItems[currIndex].updateIndex(parentDirUrl: selfIndexUrl, taskId: task.id, taskCount: indexItems.count)
 		}
+		LengthyTasksController.shared.removeTask(id: task.id)
 	}
 	
 	/// Reindex directory

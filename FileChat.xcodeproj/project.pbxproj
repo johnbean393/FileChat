@@ -18,6 +18,10 @@
 		2042425E2C0D5BEE00D173CF /* AppleGPUInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 2042425D2C0D5BEE00D173CF /* AppleGPUInfo */; };
 		204242602C0D99D300D173CF /* IndexList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042425F2C0D99D300D173CF /* IndexList.swift */; };
 		204242632C0DB5C100D173CF /* BezelNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 204242622C0DB5C100D173CF /* BezelNotification */; };
+		204242662C0E1C7D00D173CF /* LengthyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204242652C0E1C7D00D173CF /* LengthyTasksView.swift */; };
+		204242692C0E1CB800D173CF /* LengthyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204242682C0E1CB800D173CF /* LengthyTask.swift */; };
+		2042426B2C0E1D3000D173CF /* LengthyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */; };
+		2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */; };
 		A1156D312AD09FDD00081313 /* PromptTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */; };
 		A117219C2A7D7B70003B0358 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = A117219B2A7D7B70003B0358 /* MarkdownUI */; };
 		A12B52DE2AA5228100658707 /* EditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12B52DD2AA5228100658707 /* EditModels.swift */; };
@@ -132,6 +136,10 @@
 		2042424A2C0D534C00D173CF /* ContainerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerManager.swift; sourceTree = "<group>"; };
 		204242592C0D57A700D173CF /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		2042425F2C0D99D300D173CF /* IndexList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexList.swift; sourceTree = "<group>"; };
+		204242652C0E1C7D00D173CF /* LengthyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTasksView.swift; sourceTree = "<group>"; };
+		204242682C0E1CB800D173CF /* LengthyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTask.swift; sourceTree = "<group>"; };
+		2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTasksController.swift; sourceTree = "<group>"; };
+		2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTemplateTests.swift; sourceTree = "<group>"; };
 		A12B52DD2AA5228100658707 /* EditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModels.swift; sourceTree = "<group>"; };
 		A12B52E32AA5A99E00658707 /* EditSystemPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSystemPrompt.swift; sourceTree = "<group>"; };
@@ -165,7 +173,7 @@
 		A1CA32432AAF877600F9D488 /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		A1D4B49C2B9A780B00B9C4BE /* AgentDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentDefaults.swift; sourceTree = "<group>"; };
 		A1E4A6932A82B41F00BF9D34 /* Model+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Extensions.swift"; sourceTree = "<group>"; };
-		A1F617222A782AA100F2048C /* FreeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1F617222A782AA100F2048C /* FileChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F617252A782AA100F2048C /* FreeChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeChat.swift; sourceTree = "<group>"; };
 		A1F617272A782AA100F2048C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1F617292A782AA200F2048C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,8 +181,8 @@
 		A1F6172E2A782AA200F2048C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A1F617312A782AA200F2048C /* Mantras.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mantras.xcdatamodel; sourceTree = "<group>"; };
 		A1F617332A782AA200F2048C /* FreeChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FreeChat.entitlements; sourceTree = "<group>"; };
-		A1F617382A782AA200F2048C /* FreeChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreeChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1F617422A782AA200F2048C /* FreeChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreeChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1F617382A782AA200F2048C /* FileChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1F617422A782AA200F2048C /* FileChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F617462A782AA200F2048C /* FreeChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeChatUITests.swift; sourceTree = "<group>"; };
 		A1F617482A782AA200F2048C /* FreeChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A1F617552A782E4F00F2048C /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -252,6 +260,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		204242672C0E1CAB00D173CF /* LengthyTasksView */ = {
+			isa = PBXGroup;
+			children = (
+				2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */,
+				204242652C0E1C7D00D173CF /* LengthyTasksView.swift */,
+				204242682C0E1CB800D173CF /* LengthyTask.swift */,
+				2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */,
+			);
+			path = LengthyTasksView;
+			sourceTree = "<group>";
+		};
 		A13C8C5E2A8FF02500EC18D8 /* Markdown */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +288,7 @@
 				A13C8C5E2A8FF02500EC18D8 /* Markdown */,
 				A1F617272A782AA100F2048C /* ContentView.swift */,
 				A15D50D12A7F539800FC1681 /* NavList.swift */,
+				204242672C0E1CAB00D173CF /* LengthyTasksView */,
 				A19AA5202AA66784009D9573 /* Settings */,
 				A13C8C652A9027A200EC18D8 /* CopyButton.swift */,
 				A13C8C672A902A1200EC18D8 /* CGKeycode+Extensions.swift */,
@@ -339,9 +359,9 @@
 		A1F617232A782AA100F2048C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1F617222A782AA100F2048C /* FreeChat.app */,
-				A1F617382A782AA200F2048C /* FreeChatTests.xctest */,
-				A1F617422A782AA200F2048C /* FreeChatUITests.xctest */,
+				A1F617222A782AA100F2048C /* FileChat.app */,
+				A1F617382A782AA200F2048C /* FileChatTests.xctest */,
+				A1F617422A782AA200F2048C /* FileChatUITests.xctest */,
 				A1A286F22A7E17750004967A /* server-watchdog */,
 			);
 			name = Products;
@@ -427,9 +447,9 @@
 			productReference = A1A286F22A7E17750004967A /* server-watchdog */;
 			productType = "com.apple.product-type.tool";
 		};
-		A1F617212A782AA100F2048C /* FreeChat */ = {
+		A1F617212A782AA100F2048C /* FileChat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1F6174C2A782AA200F2048C /* Build configuration list for PBXNativeTarget "FreeChat" */;
+			buildConfigurationList = A1F6174C2A782AA200F2048C /* Build configuration list for PBXNativeTarget "FileChat" */;
 			buildPhases = (
 				A1F6171E2A782AA100F2048C /* Sources */,
 				A1F6171F2A782AA100F2048C /* Frameworks */,
@@ -443,7 +463,7 @@
 				A1A286FB2A7E1ACD0004967A /* PBXTargetDependency */,
 				A17A2E082A798F4C006CDD90 /* PBXTargetDependency */,
 			);
-			name = FreeChat;
+			name = FileChat;
 			packageProductDependencies = (
 				A17A2E1E2A79A075006CDD90 /* EventSource */,
 				A117219B2A7D7B70003B0358 /* MarkdownUI */,
@@ -456,12 +476,12 @@
 				204242622C0DB5C100D173CF /* BezelNotification */,
 			);
 			productName = Mantras;
-			productReference = A1F617222A782AA100F2048C /* FreeChat.app */;
+			productReference = A1F617222A782AA100F2048C /* FileChat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A1F617372A782AA200F2048C /* FreeChatTests */ = {
+		A1F617372A782AA200F2048C /* FileChatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1F6174F2A782AA200F2048C /* Build configuration list for PBXNativeTarget "FreeChatTests" */;
+			buildConfigurationList = A1F6174F2A782AA200F2048C /* Build configuration list for PBXNativeTarget "FileChatTests" */;
 			buildPhases = (
 				A1F617342A782AA200F2048C /* Sources */,
 				A1F617352A782AA200F2048C /* Frameworks */,
@@ -472,14 +492,14 @@
 			dependencies = (
 				A1F6173A2A782AA200F2048C /* PBXTargetDependency */,
 			);
-			name = FreeChatTests;
+			name = FileChatTests;
 			productName = MantrasTests;
-			productReference = A1F617382A782AA200F2048C /* FreeChatTests.xctest */;
+			productReference = A1F617382A782AA200F2048C /* FileChatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A1F617412A782AA200F2048C /* FreeChatUITests */ = {
+		A1F617412A782AA200F2048C /* FileChatUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1F617522A782AA200F2048C /* Build configuration list for PBXNativeTarget "FreeChatUITests" */;
+			buildConfigurationList = A1F617522A782AA200F2048C /* Build configuration list for PBXNativeTarget "FileChatUITests" */;
 			buildPhases = (
 				A1F6173E2A782AA200F2048C /* Sources */,
 				A1F6173F2A782AA200F2048C /* Frameworks */,
@@ -490,9 +510,9 @@
 			dependencies = (
 				A1F617442A782AA200F2048C /* PBXTargetDependency */,
 			);
-			name = FreeChatUITests;
+			name = FileChatUITests;
 			productName = MantrasUITests;
-			productReference = A1F617422A782AA200F2048C /* FreeChatUITests.xctest */;
+			productReference = A1F617422A782AA200F2048C /* FileChatUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -521,7 +541,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A1F6171D2A782AA100F2048C /* Build configuration list for PBXProject "FreeChat" */;
+			buildConfigurationList = A1F6171D2A782AA100F2048C /* Build configuration list for PBXProject "FileChat" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -544,9 +564,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A1F617212A782AA100F2048C /* FreeChat */,
-				A1F617372A782AA200F2048C /* FreeChatTests */,
-				A1F617412A782AA200F2048C /* FreeChatUITests */,
+				A1F617212A782AA100F2048C /* FileChat */,
+				A1F617372A782AA200F2048C /* FileChatTests */,
+				A1F617412A782AA200F2048C /* FileChatUITests */,
 				A1A286F12A7E17750004967A /* server-watchdog */,
 			);
 		};
@@ -611,13 +631,17 @@
 				A1A286E82A7D8A7D0004967A /* MessageView.swift in Sources */,
 				A17A2E192A79A006006CDD90 /* LlamaServer.swift in Sources */,
 				A1F617582A7836AE00F2048C /* Message+Extensions.swift in Sources */,
+				2042426B2C0E1D3000D173CF /* LengthyTasksController.swift in Sources */,
 				A13C8C682A902A1200EC18D8 /* CGKeycode+Extensions.swift in Sources */,
 				A15D50D22A7F539800FC1681 /* NavList.swift in Sources */,
 				2042424F2C0D534C00D173CF /* ContainerManager.swift in Sources */,
 				A1D4B49D2B9A780B00B9C4BE /* AgentDefaults.swift in Sources */,
+				2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */,
 				A1F617262A782AA100F2048C /* FreeChat.swift in Sources */,
 				A1E4A6942A82B41F00BF9D34 /* Model+Extensions.swift in Sources */,
 				A12B52DE2AA5228100658707 /* EditModels.swift in Sources */,
+				204242662C0E1C7D00D173CF /* LengthyTasksView.swift in Sources */,
+				204242692C0E1CB800D173CF /* LengthyTask.swift in Sources */,
 				A17AB1C22ABB4B5E00CD3100 /* CircleMenuStyle.swift in Sources */,
 				A15D50CF2A7EF73E00FC1681 /* MessageTextField.swift in Sources */,
 				A1CA32442AAF877600F9D488 /* ConversationManager.swift in Sources */,
@@ -666,12 +690,12 @@
 		};
 		A1F6173A2A782AA200F2048C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A1F617212A782AA100F2048C /* FreeChat */;
+			target = A1F617212A782AA100F2048C /* FileChat */;
 			targetProxy = A1F617392A782AA200F2048C /* PBXContainerItemProxy */;
 		};
 		A1F617442A782AA200F2048C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A1F617212A782AA100F2048C /* FreeChat */;
+			target = A1F617212A782AA100F2048C /* FileChat */;
 			targetProxy = A1F617432A782AA200F2048C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -763,7 +787,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -820,7 +844,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -847,7 +871,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeChat/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = FreeChat;
+				INFOPLIST_KEY_CFBundleDisplayName = FileChat;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -855,9 +879,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.8;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.FreeChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.FileChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -884,7 +908,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeChat/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = FreeChat;
+				INFOPLIST_KEY_CFBundleDisplayName = FileChat;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -892,9 +916,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.8;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.FreeChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.FileChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -995,7 +1019,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1F6171D2A782AA100F2048C /* Build configuration list for PBXProject "FreeChat" */ = {
+		A1F6171D2A782AA100F2048C /* Build configuration list for PBXProject "FileChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1F6174A2A782AA200F2048C /* Debug */,
@@ -1004,7 +1028,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1F6174C2A782AA200F2048C /* Build configuration list for PBXNativeTarget "FreeChat" */ = {
+		A1F6174C2A782AA200F2048C /* Build configuration list for PBXNativeTarget "FileChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1F6174D2A782AA200F2048C /* Debug */,
@@ -1013,7 +1037,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1F6174F2A782AA200F2048C /* Build configuration list for PBXNativeTarget "FreeChatTests" */ = {
+		A1F6174F2A782AA200F2048C /* Build configuration list for PBXNativeTarget "FileChatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1F617502A782AA200F2048C /* Debug */,
@@ -1022,7 +1046,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1F617522A782AA200F2048C /* Build configuration list for PBXNativeTarget "FreeChatUITests" */ = {
+		A1F617522A782AA200F2048C /* Build configuration list for PBXNativeTarget "FileChatUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1F617532A782AA200F2048C /* Debug */,
