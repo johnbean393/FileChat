@@ -41,7 +41,7 @@ extension Message {
 					.sorted(by: { abs(100 - abs($0.score)) <= abs(100 - abs($1.score)) })
 					.filter({ abs(100 - abs($0.score)) <= threshhold })
 					.dropLast(
-						searchResults.filter({ abs(100 - abs($0.score)) <= threshhold }).count - maxResultsCount
+						max(searchResults.filter({ abs(100 - abs($0.score)) <= threshhold }).count - maxResultsCount, 0)
 					)
 			)
 //			print("filteredResultsScores:", filteredResults.map({ abs(100 - abs($0.score)) }))
