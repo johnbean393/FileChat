@@ -18,7 +18,6 @@ The main goal of FileChat is to make open, local, private models accessible to m
 
 FileChat is a native LLM appliance for macOS that runs completely locally. Download it and ask your LLM a question without doing any configuration. Give the LLM access to your folders and files with just 1 click, allowing them to reply with context.
 
-- 
 - No config. Usable by people who haven't heard of models, prompts, or LLMs.
 - Performance and simplicity over dev experience or features. Notes not Word, Swift not Elektron.
 - Local first. Core functionality should not require an internet connection.
