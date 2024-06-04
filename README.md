@@ -6,7 +6,7 @@ Chat with LLMs on your Mac without installing any other software. Every conversa
 - Try any llama.cpp compatible GGML model
 - No internet connection required, all local (with the option to connect to a remote model)
 
-Note: FileChat is an extended version of FreeChat. You can visit the original [here](https://github.com/psugihara/FreeChat).
+**Note: FileChat is an extended version of FreeChat. You can visit the original [here](https://github.com/psugihara/FreeChat)**
 
 ## Install
 
