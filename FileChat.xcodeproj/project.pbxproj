@@ -140,6 +140,7 @@
 		204242682C0E1CB800D173CF /* LengthyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTask.swift; sourceTree = "<group>"; };
 		2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTasksController.swift; sourceTree = "<group>"; };
 		2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		20DF1EC02C0F0D030008D5DA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTemplateTests.swift; sourceTree = "<group>"; };
 		A12B52DD2AA5228100658707 /* EditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModels.swift; sourceTree = "<group>"; };
 		A12B52E32AA5A99E00658707 /* EditSystemPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSystemPrompt.swift; sourceTree = "<group>"; };
@@ -348,6 +349,7 @@
 		A1F617192A782AA100F2048C = {
 			isa = PBXGroup;
 			children = (
+				20DF1EC02C0F0D030008D5DA /* README.md */,
 				A1A286FE2A7E9F280004967A /* server-watchdog.entitlements */,
 				A1F617242A782AA100F2048C /* FreeChat */,
 				A1F6173B2A782AA200F2048C /* FreeChatTests */,
