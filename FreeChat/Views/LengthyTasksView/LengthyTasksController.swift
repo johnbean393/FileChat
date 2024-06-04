@@ -47,7 +47,6 @@ class LengthyTasksController: ObservableObject {
 					for index in LengthyTasksController.shared.tasks.indices {
 						if LengthyTasksController.shared.tasks[index].id == id {
 							LengthyTasksController.shared.tasks[index].progress += newProgress
-							print("\(tasks[index]) progress:", tasks[index].progress)
 							break
 						}
 					}

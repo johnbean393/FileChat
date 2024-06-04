@@ -30,22 +30,21 @@ extension Message {
 		// If SimilarityIndex is loaded
 		if IndexStore.shared.similarityIndex != nil {
 			// Calculate number of search results
-			let contextLength: Int = UserDefaults.standard.integer(forKey: "contextLength")
-			let searchResultsCount: Int = max(
-				Int((contextLength - 10000) / 1000),
-				1
-			)
+			let searchResultsCount: Int = 4
 			// Initiate search
+			let threshhold: Float = 7.5
 			let searchResults: [SimilarityIndex.SearchResult] = await IndexStore.shared.similarityIndex!.search(text)
-//			print("searchResultsScores:", searchResults.map({ abs(100 - abs($0.score)) }))
+			print("searchResultsScores:", searchResults.map({ abs(100 - abs($0.score)) }))
+			
 			let filteredResults: [SimilarityIndex.SearchResult] =
 			Array(
 				searchResults
 					.sorted(by: { abs(100 - abs($0.score)) <= abs(100 - abs($1.score)) })
-					.filter({ abs(100 - abs($0.score)) <= 12.5 })
+					.filter({ abs(100 - abs($0.score)) <= threshhold })
 					.dropLast(searchResults.count - searchResultsCount)
 			)
-//			print("filteredResultsScores:", filteredResults.map({ abs(100 - abs($0.score)) }))
+			print("dropCount:", searchResults.count - searchResultsCount)
+			print("filteredResultsScores:", filteredResults.map({ abs(100 - abs($0.score)) }))
 			// If filtered results is blank
 			if filteredResults.isEmpty {
 				// Just return text
