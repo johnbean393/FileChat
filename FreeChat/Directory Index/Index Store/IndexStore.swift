@@ -32,7 +32,11 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 		if selectedDirectory != nil {
 			for index in self.values.indices {
 				if self.values[index].id == selectedDirectory!.id {
-					self.values[index] = selectedDirectory!
+					Task {
+						await MainActor.run {
+							self.values[index] = selectedDirectory!
+						}
+					}
 					break
 				}
 			}
@@ -79,19 +83,43 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 	func updateIndex() async {
 		isLoadingIndex = true
 		if selectedDirectory != nil {
+			await MainActor.run {
+				// Check file status
+				let fileMoved: Bool = !selectedDirectory!.url.fileExists()
+				// Reselect directory if needed
+				if fileMoved {
+					var tempUrl: URL? = nil
+					repeat {
+						do {
+							tempUrl = try FileSystemTools.openPanel(
+								url: URL.desktopDirectory,
+								files: false,
+								folders: true,
+								dialogTitle: "The folder was moved. Please reselect it, then click \"Open\""
+							)
+						} catch {  }
+					} while tempUrl == nil
+					for index in selectedDirectory!.indexItems.indices {
+						// Replace paths
+						selectedDirectory!.indexItems[index].url.replaceParentUrl(
+							oldParentUrl: selectedDirectory!.url,
+							newParentUrl: tempUrl!
+						)
+					}
+					selectedDirectory!.url = tempUrl!
+				}
+			}
 			await selectedDirectory!.updateDirectoryIndex()
 			saveSelectedDirectory()
-		}
-		await MainActor.run {
-			let notification: BezelNotification = BezelNotification(text: "FileChat has finished updating the folder's index. It will now be loaded into memory.", visibleTime: 2)
-			notification.show()
+			
+			await MainActor.run {
+				let notification: BezelNotification = BezelNotification(text: "FileChat has finished updating the folder's index. It will now be loaded into memory.", visibleTime: 2)
+				notification.show()
+			}
 			loadSimilarityIndex()
 		}
 		isLoadingIndex = false
 	}
-	
-	func loadAllIndexesIntoCache() {
-		
-	}
-	
+
+
 }

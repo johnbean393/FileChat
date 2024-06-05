@@ -27,6 +27,11 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 	/// Location of the original directory
 	public var url: URL
 	
+	/// Set url
+	private mutating func setUrl(newUrl: URL) {
+		self.url = newUrl
+	}
+	
 	/// Url of the directory where indexes are stored
 	public var indexUrl: URL {
 		return ContainerManager.indexesUrl.appendingPathComponent(id.uuidString)
@@ -136,4 +141,5 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 	public func showIndexDirectory() {
 		NSWorkspace.shared.activateFileViewerSelecting([indexUrl])
 	}
+	
 }
