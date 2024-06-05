@@ -51,14 +51,12 @@ struct FileChatApp: App {
 			})
 		}
 		
-		
-#if os(macOS)
 		Settings {
 			SettingsView()
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
 				.environmentObject(conversationManager)
 		}
 		.windowResizability(.contentSize)
-#endif
+		
 	}
 }

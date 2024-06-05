@@ -8,9 +8,13 @@ Chat with LLMs on your Mac without installing any other software. Every conversa
 
 **Note: FileChat is an extended version of FreeChat. You can visit the original [here](https://github.com/psugihara/FreeChat)**
 
-## Install
+## Installation
 
-Download, open in Xcode, and build it.
+**Prebuilt Package**
+- Download the packages from [Releases](https://github.com/johnbean393/FileChat/releases), and open it. Note that since the package is not notarized, you will need to enable it in System Settings. 
+
+**Build it yourself**
+- Download, open in Xcode, and build it.
 
 ## Goals
 
