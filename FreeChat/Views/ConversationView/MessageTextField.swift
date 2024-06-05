@@ -134,13 +134,23 @@ struct MessageTextField: View {
 	}
 	
 	var togglePanelButton: some View {
-		buttonImage
-			.padding(.trailing)
-			.onTapGesture {
-				withAnimation(.spring(duration: 0.5)) {
-					indexStore.isSelectingIndex.toggle()
-				}
+		HStack {
+			Image(systemName: "paperclip")
+				.background(Color.clear)
+			buttonImage
+		}
+		.font(.system(size: 16))
+		.bold()
+		.padding(4)
+		.background {
+			Capsule().fill(Color.blue)
+		}
+		.padding(.trailing)
+		.onTapGesture {
+			withAnimation(.spring(duration: 0.5)) {
+				indexStore.isSelectingIndex.toggle()
 			}
+		}
 	}
 	
 	var indexSelectionPanel: some View {
