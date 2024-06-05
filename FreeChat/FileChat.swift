@@ -33,10 +33,15 @@ struct FileChatApp: App {
 				}
 		}
 		.commands {
-			CommandGroup(replacing: .newItem) {
+			CommandMenu("Chat") {
 				Button("New Chat") {
 					conversationManager.newConversation(viewContext: persistenceController.container.viewContext, openWindow: openWindow)
 				}.keyboardShortcut(KeyboardShortcut("N"))
+				Button("\(indexStore.isSelectingIndex ? "Hide": "Show") \"Select Folder\" Panel") {
+					withAnimation(.spring()) {
+						indexStore.isSelectingIndex.toggle()
+					}
+				}.keyboardShortcut(KeyboardShortcut("P"))
 			}
 			SidebarCommands()
 			CommandGroup(after: .windowList, addition: {

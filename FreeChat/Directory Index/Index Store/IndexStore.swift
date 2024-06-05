@@ -16,6 +16,8 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 		super.init(appDirName: appDirName, datastoreName: datastoreName)
 	}
 	
+	@Published var isSelectingIndex: Bool = false
+	
 	static let shared: IndexStore = IndexStore()
 	
 	var isLoadingIndex: Bool = false

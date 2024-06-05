@@ -60,11 +60,9 @@ struct MessageTextField: View {
 	@State var showNullState = false
 	
 	@FocusState private var focused: Bool
-	
-	@State private var isSelectingIndex: Bool = false
 
 	var buttonImage: some View {
-		let angle: Double = isSelectingIndex ? -90 : 90
+		let angle: Double = indexStore.isSelectingIndex ? -90 : 90
 		return Image(systemName: "chevron.left.2").rotationEffect(Angle(degrees: angle)).background(Color.clear)
 	}
 	
@@ -124,7 +122,7 @@ struct MessageTextField: View {
 			if showNullState {
 				nullState.transition(.asymmetric(insertion: .push(from: .trailing), removal: .identity))
 			}
-			if isSelectingIndex {
+			if indexStore.isSelectingIndex {
 				indexSelectionPanel
 			}
 			HStack {
@@ -140,7 +138,7 @@ struct MessageTextField: View {
 			.padding(.trailing)
 			.onTapGesture {
 				withAnimation(.spring(duration: 0.5)) {
-					isSelectingIndex.toggle()
+					indexStore.isSelectingIndex.toggle()
 				}
 			}
 	}

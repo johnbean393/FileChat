@@ -57,7 +57,7 @@
 		A1CA32442AAF877600F9D488 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA32432AAF877600F9D488 /* ConversationManager.swift */; };
 		A1D4B49D2B9A780B00B9C4BE /* AgentDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4B49C2B9A780B00B9C4BE /* AgentDefaults.swift */; };
 		A1E4A6942A82B41F00BF9D34 /* Model+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4A6932A82B41F00BF9D34 /* Model+Extensions.swift */; };
-		A1F617262A782AA100F2048C /* FreeChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F617252A782AA100F2048C /* FreeChat.swift */; };
+		A1F617262A782AA100F2048C /* FileChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F617252A782AA100F2048C /* FileChat.swift */; };
 		A1F617282A782AA100F2048C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F617272A782AA100F2048C /* ContentView.swift */; };
 		A1F6172A2A782AA200F2048C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F617292A782AA200F2048C /* Assets.xcassets */; };
 		A1F6172D2A782AA200F2048C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F6172C2A782AA200F2048C /* Preview Assets.xcassets */; };
@@ -68,7 +68,7 @@
 		A1F617562A782E4F00F2048C /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F617552A782E4F00F2048C /* ConversationView.swift */; };
 		A1F617582A7836AE00F2048C /* Message+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F617572A7836AE00F2048C /* Message+Extensions.swift */; };
 		A1F6175B2A7838F700F2048C /* Conversation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F6175A2A7838F700F2048C /* Conversation+Extensions.swift */; };
-		DEA8CF572B51938B007A4CE7 /* FreeChatAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA8CF562B51938B007A4CE7 /* FreeChatAppDelegate.swift */; };
+		DEA8CF572B51938B007A4CE7 /* FileChatAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA8CF562B51938B007A4CE7 /* FileChatAppDelegate.swift */; };
 		DEEA39CC2B586F3800992592 /* ServerHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA39CB2B586F3800992592 /* ServerHealth.swift */; };
 /* End PBXBuildFile section */
 
@@ -177,7 +177,7 @@
 		A1D4B49C2B9A780B00B9C4BE /* AgentDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentDefaults.swift; sourceTree = "<group>"; };
 		A1E4A6932A82B41F00BF9D34 /* Model+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Extensions.swift"; sourceTree = "<group>"; };
 		A1F617222A782AA100F2048C /* FileChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1F617252A782AA100F2048C /* FreeChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeChat.swift; sourceTree = "<group>"; };
+		A1F617252A782AA100F2048C /* FileChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileChat.swift; sourceTree = "<group>"; };
 		A1F617272A782AA100F2048C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1F617292A782AA200F2048C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1F6172C2A782AA200F2048C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		A1F617552A782E4F00F2048C /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		A1F617572A7836AE00F2048C /* Message+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+Extensions.swift"; sourceTree = "<group>"; };
 		A1F6175A2A7838F700F2048C /* Conversation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Conversation+Extensions.swift"; sourceTree = "<group>"; };
-		DEA8CF562B51938B007A4CE7 /* FreeChatAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeChatAppDelegate.swift; sourceTree = "<group>"; };
+		DEA8CF562B51938B007A4CE7 /* FileChatAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileChatAppDelegate.swift; sourceTree = "<group>"; };
 		DEEA39CB2B586F3800992592 /* ServerHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerHealth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -375,8 +375,8 @@
 		A1F617242A782AA100F2048C /* FreeChat */ = {
 			isa = PBXGroup;
 			children = (
-				A1F617252A782AA100F2048C /* FreeChat.swift */,
-				DEA8CF562B51938B007A4CE7 /* FreeChatAppDelegate.swift */,
+				A1F617252A782AA100F2048C /* FileChat.swift */,
+				DEA8CF562B51938B007A4CE7 /* FileChatAppDelegate.swift */,
 				A1F6172E2A782AA200F2048C /* Persistence.swift */,
 				A137A38D2AB6B52400BE1AE0 /* Constants.swift */,
 				A15D50D02A7F49CD00FC1681 /* Views */,
@@ -624,7 +624,7 @@
 				A13C8C602A8FF03800EC18D8 /* TextOutputFormat.swift in Sources */,
 				2042424C2C0D534C00D173CF /* IndexedDirectory.swift in Sources */,
 				A1F6175B2A7838F700F2048C /* Conversation+Extensions.swift in Sources */,
-				DEA8CF572B51938B007A4CE7 /* FreeChatAppDelegate.swift in Sources */,
+				DEA8CF572B51938B007A4CE7 /* FileChatAppDelegate.swift in Sources */,
 				A13C8C622A8FF27000EC18D8 /* Theme+FreeChat.swift in Sources */,
 				A1F6172F2A782AA200F2048C /* Persistence.swift in Sources */,
 				A12B52E42AA5A99E00658707 /* EditSystemPrompt.swift in Sources */,
@@ -643,7 +643,7 @@
 				2042424F2C0D534C00D173CF /* ContainerManager.swift in Sources */,
 				A1D4B49D2B9A780B00B9C4BE /* AgentDefaults.swift in Sources */,
 				2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */,
-				A1F617262A782AA100F2048C /* FreeChat.swift in Sources */,
+				A1F617262A782AA100F2048C /* FileChat.swift in Sources */,
 				A1E4A6942A82B41F00BF9D34 /* Model+Extensions.swift in Sources */,
 				A12B52DE2AA5228100658707 /* EditModels.swift in Sources */,
 				204242662C0E1C7D00D173CF /* LengthyTasksView.swift in Sources */,
@@ -868,7 +868,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FreeChat/Preview Content\"";
 				DEVELOPMENT_TEAM = KM2C4ZAVPJ;
@@ -880,13 +880,13 @@
 				INFOPLIST_KEY_CFBundleDisplayName = FileChat;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "@Copyright 2024, johnbean393";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.FileChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -905,7 +905,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FreeChat/Preview Content\"";
 				DEVELOPMENT_TEAM = KM2C4ZAVPJ;
@@ -917,13 +917,13 @@
 				INFOPLIST_KEY_CFBundleDisplayName = FileChat;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "@Copyright 2024, johnbean393";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pattonium.scripts.FileChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
