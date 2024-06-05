@@ -112,7 +112,7 @@ actor LlamaServer {
 		process.executableURL = Bundle.main.url(forAuxiliaryExecutable: "freechat-server")
 		let processes = ProcessInfo.processInfo.activeProcessorCount
 			
-		let gpuLayers: Int = min(GPU.coreCount + 5, 35)
+		let gpuLayers: Int = max(min(GPU.coreCount + 5, 35), 30)
 		
 		process.arguments = [
 			"--model", modelPath,
