@@ -107,11 +107,24 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 						)
 					}
 					selectedDirectory!.url = tempUrl!
+				} else {
+					// Select directory for permissions
+					var noError: Bool = false
+					repeat {
+						do {
+							let _ = try FileSystemTools.openPanel(
+								url: selectedDirectory!.url,
+								files: false,
+								folders: true,
+								dialogTitle: "FileChat needs permissions to access the folder. Select it, then click \"Open\""
+							)
+							noError = true
+						} catch {  }
+					} while !noError
 				}
 			}
 			await selectedDirectory!.updateDirectoryIndex()
 			saveSelectedDirectory()
-			
 			await MainActor.run {
 				let notification: BezelNotification = BezelNotification(text: "FileChat has finished updating the folder's index. It will now be loaded into memory.", visibleTime: 2)
 				notification.show()

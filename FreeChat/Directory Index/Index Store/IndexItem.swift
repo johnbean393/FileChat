@@ -103,9 +103,11 @@ extension IndexedDirectory {
 				let attributes: [FileAttributeKey: Any] = try FileManager.default.attributesOfItem(atPath: path)
 				let modificationDate: Date = attributes[FileAttributeKey.modificationDate] as? Date ?? Date.distantFuture
 				if modificationDate < self.prevIndexDate {
+//					print("File \"\(url.posixPath())\" scanned since last change")
 					return
 				}
 			} catch {  }
+//			print("File not \"\(url.posixPath())\" scanned since last change")
 			// Switch flag
 			indexState.startIndex()
 			// Extract text from file
@@ -131,6 +133,8 @@ extension IndexedDirectory {
 			saveIndex(parentDirUrl: parentDirUrl, similarityIndex: similarityIndex)
 			// Switch flag
 			indexState.finishIndex()
+			// Show file updated
+			print("Updated index for file \"\(url.posixPath())\"")
 			// Record last index date
 			self.prevIndexDate = Date.now
 			// Increment task

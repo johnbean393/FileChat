@@ -70,10 +70,17 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 	// Update index
 	public mutating func updateDirectoryIndex() async {
 		// Update for each file
-		let files: [URL] = (try? self.url.listDirectory()) ?? []
+		var files: [URL] = []
+		do {
+			files = try self.url.listDirectory()
+			print("Files in \"\(self.url.posixPath())\":", try FileManager.default.contentsOfDirectory(atPath: self.url.posixPath()))
+		} catch {
+			print("Error listing directory:", error)
+		}
 		let task: LengthyTask = LengthyTasksController.shared.addTask(name: "Loading \"\(url.lastPathComponent)\" Folder Index", progress: 0.0)
 		for file in files {
 			await self.indexFile(file: file, taskId: task.id, taskCount: indexItems.count)
+//			print("Indexing file \"\(file.posixPath())\"")
 		}
 		// Filter for moved items
 		let tempIndexItems: [IndexItem] = indexItems.filter({ $0.wasMoved })

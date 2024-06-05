@@ -15,7 +15,6 @@ extension URL {
 		let newPath: String = self
 			.posixPath()
 			.replacingOccurrences(of: oldPosixPath, with: newPosixPath)
-		print("\(oldPosixPath) -> \(newPosixPath)")
 		self = URL(fileURLWithPath: newPath)
 	}
 	
