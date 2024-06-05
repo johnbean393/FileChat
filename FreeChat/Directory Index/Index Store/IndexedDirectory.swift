@@ -73,7 +73,7 @@ public struct IndexedDirectory: Codable, Identifiable, Equatable, Hashable {
 		var files: [URL] = []
 		do {
 			files = try self.url.listDirectory()
-			print("Files in \"\(self.url.posixPath())\":", try FileManager.default.contentsOfDirectory(atPath: self.url.posixPath()))
+			print("Files in \"\(self.url.posixPath())\":", files)
 		} catch {
 			print("Error listing directory:", error)
 		}

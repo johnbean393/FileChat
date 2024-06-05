@@ -122,14 +122,14 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 						} catch {  }
 					} while !noError
 				}
-			}
-			await selectedDirectory!.updateDirectoryIndex()
-			saveSelectedDirectory()
-			await MainActor.run {
+				Task {
+					await selectedDirectory!.updateDirectoryIndex()
+					saveSelectedDirectory()
+				}
 				let notification: BezelNotification = BezelNotification(text: "FileChat has finished updating the folder's index. It will now be loaded into memory.", visibleTime: 2)
 				notification.show()
+				loadSimilarityIndex()
 			}
-			loadSimilarityIndex()
 		}
 		isLoadingIndex = false
 	}
