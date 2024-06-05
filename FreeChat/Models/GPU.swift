@@ -10,8 +10,10 @@ import AppleGPUInfo
 
 final class GPU: ObservableObject {
 	
+	/// Shared singleton object
 	static let shared = GPU()
 	
+	/// Returns GPU core count
 	static var coreCount: Int {
 		do {
 			let gpuDevice: GPUInfoDevice = try GPUInfoDevice()
@@ -21,13 +23,16 @@ final class GPU: ObservableObject {
 		}
 	}
 	
-	@Published private(set) var available = false
+	/// Returns if the GPU is available
+	@Published private(set) var available: Bool = false
 	
+	/// Initializer
 	init() {
 		// LLaMa crashes on intel macs when gpu-layers != 0, not sure why
 		available = getMachineHardwareName() == "arm64"
 	}
 	
+	/// Gets the name of the system
 	private func getMachineHardwareName() -> String? {
 		var sysInfo = utsname()
 		let retVal = uname(&sysInfo)

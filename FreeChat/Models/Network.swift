@@ -9,6 +9,7 @@ import Foundation
 import Network
 
 final class Network: ObservableObject {
+	
 	static let shared = Network()
 	
 	@Published private(set) var isConnected = false
@@ -34,4 +35,5 @@ final class Network: ObservableObject {
 	public func stop() {
 		nwMonitor.cancel()
 	}
+	
 }

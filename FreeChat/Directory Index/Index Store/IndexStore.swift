@@ -16,21 +16,27 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 		super.init(appDirName: appDirName, datastoreName: datastoreName)
 	}
 	
-	@Published var isSelectingIndex: Bool = false
-	
+	/// Shared singleton object
 	static let shared: IndexStore = IndexStore()
 	
+	/// Controls whether folder selecting panel is shown
+	@Published var isSelectingIndex: Bool = false
+	
+	/// Controls whether new messages can be sent
 	var isLoadingIndex: Bool = false
 	
+	/// Stores the currently selected directory
 	var selectedDirectory: IndexedDirectory? = nil {
 		didSet {
 			loadSimilarityIndex()
 		}
 	}
 	
+	/// Caches currently selected index, as it takes a significant time to load from disk
 	var similarityIndex: SimilarityIndex? = nil
 	
-	func saveSelectedDirectory() {
+	/// Save the selected IndexedDirectory to disk after it is mutated
+	private func saveSelectedDirectory() {
 		if selectedDirectory != nil {
 			for index in self.values.indices {
 				if self.values[index].id == selectedDirectory!.id {
@@ -45,7 +51,8 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 		}
 	}
 	
-	func loadSimilarityIndex() {
+	/// Loads similarity index from disk
+	public func loadSimilarityIndex() {
 		if selectedDirectory != nil {
 			isLoadingIndex = true
 			Task {
@@ -59,7 +66,8 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 		}
 	}
 	
-	func addIndexedDirectory(url: URL) {
+	/// Sets up a new IndexedDirectory
+	public func addIndexedDirectory(url: URL) {
 		Task {
 			var indexedDir: IndexedDirectory = IndexedDirectory(url: url)
 			await indexedDir.setup()
@@ -67,12 +75,14 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 		}
 	}
 	
+	/// Adds IndexedDirectory to JSON storage
 	private func addToIndexedDir(indexedDir: IndexedDirectory) async {
 		await MainActor.run {
 			IndexStore.shared.values.append(indexedDir)
 		}
 	}
 	
+	/// Purges an index from disk and removes it from the JSON storage
 	func removeIndex(indexedDir: IndexedDirectory) {
 		// Remove directory
 		do {
@@ -82,6 +92,7 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 		IndexStore.shared.values = IndexStore.shared.values.filter({ $0 != indexedDir })
 	}
 	
+	/// Updates the currently selected index with incremental indexing
 	func updateIndex() async {
 		isLoadingIndex = true
 		if selectedDirectory != nil {
