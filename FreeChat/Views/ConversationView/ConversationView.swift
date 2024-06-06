@@ -73,7 +73,7 @@ struct ConversationView: View, Sendable {
 	@State var showErrorAlert = false
 	
 	@State private var prevProgress: String = ""
-	@State private var readProgress: String = ""
+	@State private var fullText: String = ""
 	
 	// Variables for directory context functionality
 	@State private var similarityIndex: SimilarityIndex?
@@ -123,6 +123,23 @@ struct ConversationView: View, Sendable {
 						speechSynthesizer.speak(utterance)
 						// Reset buffer
 						prevProgress = prevProgress + newText
+					}
+					// Save full text
+					if text.count >= fullText.count {
+						fullText = text
+					}
+					// Say last part, then clear progress when appropriate
+					if text.count < prevProgress.count && text.isEmpty {
+						// Define utterance
+						let utterance: AVSpeechUtterance = AVSpeechUtterance(
+							string: fullText
+								.replacingOccurrences(of: prevProgress, with: "")
+						)
+						utterance.rate = 0.525
+						utterance.preUtteranceDelay = 0.0
+						utterance.postUtteranceDelay = 0.0
+						speechSynthesizer.speak(utterance)
+						prevProgress = ""
 					}
 				}
 			}

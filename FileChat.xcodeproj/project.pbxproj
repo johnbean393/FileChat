@@ -24,6 +24,7 @@
 		2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */; };
 		2078A9442C11598400D9ACDD /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078A9432C11598400D9ACDD /* ConversationController.swift */; };
 		2085D6A92C0FEE5300774EDD /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D6A82C0FEE5300774EDD /* Extension+URL.swift */; };
+		208D82A02C11842300E8AB01 /* BottomToolbarPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D829F2C11842300E8AB01 /* BottomToolbarPanel.swift */; };
 		20C3ED8A2C116D6F00097FBF /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 20C3ED892C116D6F00097FBF /* Shimmer */; };
 		A1156D312AD09FDD00081313 /* PromptTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */; };
 		A117219C2A7D7B70003B0358 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = A117219B2A7D7B70003B0358 /* MarkdownUI */; };
@@ -146,6 +147,7 @@
 		205D22222C10499000C750EF /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		2078A9432C11598400D9ACDD /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 		2085D6A82C0FEE5300774EDD /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
+		208D829F2C11842300E8AB01 /* BottomToolbarPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToolbarPanel.swift; sourceTree = "<group>"; };
 		20DF1EC02C0F0D030008D5DA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTemplateTests.swift; sourceTree = "<group>"; };
 		A12B52DD2AA5228100658707 /* EditModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModels.swift; sourceTree = "<group>"; };
@@ -328,9 +330,9 @@
 				A1A286E72A7D8A7D0004967A /* MessageView.swift */,
 				A19AA5212AA667BE009D9573 /* QuickPromptButton.swift */,
 				A137A37B2AB3D26C00BE1AE0 /* ObservableScrollView.swift */,
-				A15D50CE2A7EF73E00FC1681 /* BottomToolbar.swift */,
 				2042425F2C0D99D300D173CF /* IndexList.swift */,
-				2078A9432C11598400D9ACDD /* ConversationController.swift */,
+				A15D50CE2A7EF73E00FC1681 /* BottomToolbar.swift */,
+				208D829F2C11842300E8AB01 /* BottomToolbarPanel.swift */,
 			);
 			path = ConversationView;
 			sourceTree = "<group>";
@@ -430,6 +432,7 @@
 				A17A2E1B2A79A00D006CDD90 /* NPC */,
 				A1F617572A7836AE00F2048C /* Message+Extensions.swift */,
 				A1F6175A2A7838F700F2048C /* Conversation+Extensions.swift */,
+				2078A9432C11598400D9ACDD /* ConversationController.swift */,
 				A1E4A6932A82B41F00BF9D34 /* Model+Extensions.swift */,
 				A1CA32432AAF877600F9D488 /* ConversationManager.swift */,
 				A12FAAEF2AC638DE006ACC43 /* DownloadManager.swift */,
@@ -652,6 +655,7 @@
 				2042424F2C0D534C00D173CF /* ContainerManager.swift in Sources */,
 				A1D4B49D2B9A780B00B9C4BE /* AgentDefaults.swift in Sources */,
 				2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */,
+				208D82A02C11842300E8AB01 /* BottomToolbarPanel.swift in Sources */,
 				A1F617262A782AA100F2048C /* FileChat.swift in Sources */,
 				A1E4A6942A82B41F00BF9D34 /* Model+Extensions.swift in Sources */,
 				A12B52DE2AA5228100658707 /* EditModels.swift in Sources */,
@@ -891,6 +895,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "@Copyright 2024, johnbean393";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone access needed for built-in dictation feature.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech recognition needed for built-in dictation feature.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -922,12 +928,16 @@
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=*]" = x86_64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeChat/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FileChat;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "@Copyright 2024, johnbean393";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone access needed for built-in dictation feature.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech recognition needed for built-in dictation feature.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

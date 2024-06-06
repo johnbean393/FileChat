@@ -16,7 +16,7 @@ struct LoadingAnimationView: View {
 		ZStack {
 			Circle()
 				.trim(from: 0, to: to)
-				.stroke(style: .init(lineWidth: 5, lineCap: .round))
+				.stroke(style: .init(lineWidth: 2, lineCap: .round))
 				.foregroundColor(.secondary)
 				.rotationEffect(.degrees(rotation))
 				.animation(

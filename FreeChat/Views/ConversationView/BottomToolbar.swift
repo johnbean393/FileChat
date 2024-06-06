@@ -6,16 +6,20 @@
 //
 
 import SwiftUI
+import ExtensionKit
 import BezelNotification
 
 struct ChatStyle: TextFieldStyle {
 	
 	@Environment(\.colorScheme) var colorScheme
-	var focused: Bool
+	
+	@FocusState var isFocused: Bool
+	
 	let cornerRadius = 16.0
 	var rect: RoundedRectangle {
 		RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
 	}
+	
 	func _body(configuration: TextField<Self._Label>) -> some View {
 		configuration
 			.textFieldStyle(.plain)
@@ -27,9 +31,12 @@ struct ChatStyle: TextFieldStyle {
 				LinearGradient(colors: [Color.textBackground, Color.textBackground.opacity(0.5)], startPoint: .leading, endPoint: .trailing)
 			)
 			.mask(rect)
-			.overlay(rect.stroke(style: StrokeStyle(lineWidth: 1))
-				.fill(Color.gray))
-			.animation(focused ? .easeIn(duration: 0.2) : .easeOut(duration: 0.0), value: focused)
+			.overlay(
+				rect
+					.stroke(style: StrokeStyle(lineWidth: 1))
+					.foregroundStyle(isFocused ? Color.orange : Color.white)
+			)
+			.animation(isFocused ? .easeIn(duration: 0.2) : .easeOut(duration: 0.0), value: isFocused)
 	}
 	
 }
@@ -62,22 +69,40 @@ struct BottomToolbar: View {
 	@State var showNullState = false
 	
 	@FocusState private var focused: Bool
-
+	
+	@State private var selectedDir: IndexedDirectory? = nil
+	
+	var body: some View {
+		let messages = conversation.messages
+		let showNullState = input == "" && (messages == nil || messages!.count == 0)
+		
+		VStack(alignment: .trailing) {
+			if showNullState {
+				nilState.transition(.asymmetric(insertion: .push(from: .trailing), removal: .identity))
+			}
+			if conversationController.panelIsShown {
+				BottomToolbarPanel(selectedDir: $selectedDir)
+			}
+			HStack {
+				inputField
+				LengthyTasksView()
+				togglePanelButton
+			}
+		}
+	}
+	
 	var buttonImage: some View {
 		let angle: Double = conversationController.panelIsShown ? -90 : 90
 		return Image(systemName: "chevron.left.2").rotationEffect(Angle(degrees: angle)).background(Color.clear)
 	}
 	
-	@State private var selectedDir: IndexedDirectory? = nil
-	
-	var nullState: some View {
+	var nilState: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			HStack {
 				ForEach(QuickPromptButton.quickPrompts) { p in
 					QuickPromptButton(input: $input, prompt: p)
 				}
 			}.padding(.horizontal, 10).padding(.top, 200)
-			
 		}.frame(maxWidth: .infinity)
 	}
 	
@@ -96,7 +121,7 @@ struct BottomToolbar: View {
 					}
 				}
 				.focused($focused)
-				.textFieldStyle(ChatStyle(focused: focused))
+				.textFieldStyle(ChatStyle(isFocused: _focused))
 				.submitLabel(.send)
 				.padding([.vertical, .leading], 10)
 				.onAppear {
@@ -113,26 +138,6 @@ struct BottomToolbar: View {
 				}
 		}
 		
-	}
-	
-	
-	var body: some View {
-		let messages = conversation.messages
-		let showNullState = input == "" && (messages == nil || messages!.count == 0)
-		
-		VStack(alignment: .trailing) {
-			if showNullState {
-				nullState.transition(.asymmetric(insertion: .push(from: .trailing), removal: .identity))
-			}
-			if conversationController.panelIsShown {
-				BottomToolbarPanel(selectedDir: $selectedDir)
-			}
-			HStack {
-				inputField
-				LengthyTasksView()
-				togglePanelButton
-			}
-		}
 	}
 	
 	var togglePanelButton: some View {
@@ -161,73 +166,12 @@ struct BottomToolbar: View {
 					.background {
 						Capsule()
 							.stroke(style: StrokeStyle(lineWidth: 3.25))
-							.fill(Color.gray)
+							.fill(Color.white)
 					}
 			}
 		}
 		.buttonStyle(PlainButtonStyle())
 		.padding(.trailing)
-	}
-	
-}
-
-struct BottomToolbarPanel: View {
-	
-	@EnvironmentObject var conversationController: ConversationController
-	
-	@Binding var selectedDir: IndexedDirectory?
-	
-	var body: some View {
-		GroupBox {
-			HSplitView {
-				indexSelectionList
-				conversationSettings
-			}
-			.frame(maxHeight: 250)
-			.padding(4)
-			.padding(.top, 2)
-		}
-		.background {
-			RoundedRectangle(cornerRadius: 8)
-				.fill(Color.textBackground)
-		}
-		.padding(.horizontal)
-	}
-	
-	var indexSelectionList: some View {
-		VStack {
-			Text(selectedDir == nil ? "Select a Folder" : "Selected 1 Folder")
-				.bold()
-				.font(.title2)
-			Divider()
-			IndexPicker(selectedDir: $selectedDir)
-		}
-	}
-	
-	var conversationSettings: some View {
-		VStack {
-			Text("Settings")
-				.bold()
-				.font(.title2)
-			Divider()
-			Form {
-				Section {
-					Toggle(isOn: $conversationController.readAloud, label: {
-						VStack(alignment: .leading) {
-							Text("Read Aloud")
-								.font(.title3)
-							Text("Read chatbot reply aloud")
-								.font(.caption)
-						}
-					})
-					.toggleStyle(.switch)
-				} header: {
-					Text("Accessibility")
-				}
-			}
-			
-		}
-		.formStyle(.grouped)
 	}
 	
 }

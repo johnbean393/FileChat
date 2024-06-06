@@ -26,7 +26,7 @@ struct LengthyTasksView: View {
 			.background {
 				Capsule()
 					.stroke(style: StrokeStyle(lineWidth: 1))
-					.fill(Color.gray)
+					.fill(Color.white)
 			}
 		}
 	}
