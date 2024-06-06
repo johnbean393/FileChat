@@ -38,18 +38,29 @@ struct FileChatApp: App {
 			CommandMenu("Chat") {
 				Button("New Chat") {
 					conversationManager.newConversation(viewContext: persistenceController.container.viewContext, openWindow: openWindow)
-				}.keyboardShortcut(KeyboardShortcut("N"))
-				Button("\(converationController.panelIsShown ? "Hide": "Show") \"Select Folder\" Panel") {
+				}
+				.keyboardShortcut(KeyboardShortcut("N"))
+				Button("\(converationController.panelIsShown ? "Hide": "Show") Panel") {
 					withAnimation(.spring()) {
 						converationController.panelIsShown.toggle()
 					}
-				}.keyboardShortcut(KeyboardShortcut("P"))
+				}
+				.keyboardShortcut(KeyboardShortcut("P"))
 			}
 			SidebarCommands()
 			CommandGroup(after: .windowList, addition: {
 				Button("Conversations") {
 					conversationManager.bringConversationToFront(openWindow: openWindow)
-				}.keyboardShortcut(KeyboardShortcut("0"))
+				}
+				.keyboardShortcut(KeyboardShortcut("0"))
+			})
+			CommandGroup(after: .toolbar, addition: {
+				Button("Enter Full Screen") {
+					for index in NSApplication.shared.windows.indices {
+						NSApplication.shared.windows[index].toggleFullScreen(nil)
+					}
+				}
+				.keyboardShortcut("f", modifiers: [.command, .control])
 			})
 		}
 		
