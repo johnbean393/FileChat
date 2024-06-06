@@ -22,6 +22,7 @@
 		204242692C0E1CB800D173CF /* LengthyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204242682C0E1CB800D173CF /* LengthyTask.swift */; };
 		2042426B2C0E1D3000D173CF /* LengthyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */; };
 		2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */; };
+		2078A9442C11598400D9ACDD /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078A9432C11598400D9ACDD /* ConversationController.swift */; };
 		2085D6A92C0FEE5300774EDD /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D6A82C0FEE5300774EDD /* Extension+URL.swift */; };
 		A1156D312AD09FDD00081313 /* PromptTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */; };
 		A117219C2A7D7B70003B0358 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = A117219B2A7D7B70003B0358 /* MarkdownUI */; };
@@ -39,7 +40,7 @@
 		A13C8C622A8FF27000EC18D8 /* Theme+FreeChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C8C612A8FF27000EC18D8 /* Theme+FreeChat.swift */; };
 		A13C8C662A9027A200EC18D8 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C8C652A9027A200EC18D8 /* CopyButton.swift */; };
 		A13C8C682A902A1200EC18D8 /* CGKeycode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C8C672A902A1200EC18D8 /* CGKeycode+Extensions.swift */; };
-		A15D50CF2A7EF73E00FC1681 /* MessageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15D50CE2A7EF73E00FC1681 /* MessageTextField.swift */; };
+		A15D50CF2A7EF73E00FC1681 /* BottomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15D50CE2A7EF73E00FC1681 /* BottomToolbar.swift */; };
 		A15D50D22A7F539800FC1681 /* NavList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15D50D12A7F539800FC1681 /* NavList.swift */; };
 		A15D50D42A80BCA900FC1681 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15D50D32A80BCA900FC1681 /* SettingsView.swift */; };
 		A16FFF8B2B2E35D200E6AAE2 /* GPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16FFF8A2B2E35D200E6AAE2 /* GPU.swift */; };
@@ -142,6 +143,7 @@
 		2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTasksController.swift; sourceTree = "<group>"; };
 		2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		205D22222C10499000C750EF /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		2078A9432C11598400D9ACDD /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 		2085D6A82C0FEE5300774EDD /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
 		20DF1EC02C0F0D030008D5DA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTemplateTests.swift; sourceTree = "<group>"; };
@@ -157,7 +159,7 @@
 		A13C8C612A8FF27000EC18D8 /* Theme+FreeChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+FreeChat.swift"; sourceTree = "<group>"; };
 		A13C8C652A9027A200EC18D8 /* CopyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
 		A13C8C672A902A1200EC18D8 /* CGKeycode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGKeycode+Extensions.swift"; sourceTree = "<group>"; };
-		A15D50CE2A7EF73E00FC1681 /* MessageTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextField.swift; sourceTree = "<group>"; };
+		A15D50CE2A7EF73E00FC1681 /* BottomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToolbar.swift; sourceTree = "<group>"; };
 		A15D50D12A7F539800FC1681 /* NavList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavList.swift; sourceTree = "<group>"; };
 		A15D50D32A80BCA900FC1681 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A16FFF8A2B2E35D200E6AAE2 /* GPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPU.swift; sourceTree = "<group>"; };
@@ -324,8 +326,9 @@
 				A1A286E72A7D8A7D0004967A /* MessageView.swift */,
 				A19AA5212AA667BE009D9573 /* QuickPromptButton.swift */,
 				A137A37B2AB3D26C00BE1AE0 /* ObservableScrollView.swift */,
-				A15D50CE2A7EF73E00FC1681 /* MessageTextField.swift */,
+				A15D50CE2A7EF73E00FC1681 /* BottomToolbar.swift */,
 				2042425F2C0D99D300D173CF /* IndexList.swift */,
+				2078A9432C11598400D9ACDD /* ConversationController.swift */,
 			);
 			path = ConversationView;
 			sourceTree = "<group>";
@@ -651,9 +654,10 @@
 				204242662C0E1C7D00D173CF /* LengthyTasksView.swift in Sources */,
 				204242692C0E1CB800D173CF /* LengthyTask.swift in Sources */,
 				A17AB1C22ABB4B5E00CD3100 /* CircleMenuStyle.swift in Sources */,
-				A15D50CF2A7EF73E00FC1681 /* MessageTextField.swift in Sources */,
+				A15D50CF2A7EF73E00FC1681 /* BottomToolbar.swift in Sources */,
 				A1CA32442AAF877600F9D488 /* ConversationManager.swift in Sources */,
 				A13C8C662A9027A200EC18D8 /* CopyButton.swift in Sources */,
+				2078A9442C11598400D9ACDD /* ConversationController.swift in Sources */,
 				A17A2E182A79A006006CDD90 /* Agent.swift in Sources */,
 				A12FAAEC2AC5E0C0006ACC43 /* WelcomeSheet.swift in Sources */,
 				DEEA39CC2B586F3800992592 /* ServerHealth.swift in Sources */,

@@ -31,23 +31,32 @@ struct IndexList: View {
 	
 	var body: some View {
 		List(indexStore.values, selection: $selectedDir) { indexedDir in
-			Text(indexedDir.url.lastPathComponent)
-				.tag(indexedDir)
-				.contextMenu {
-					Button("Show in Finder") {
-						NSWorkspace.shared.activateFileViewerSelecting([indexedDir.url])
-					}
-					Button("Show Index in Finder") {
-						indexedDir.showIndexDirectory()
-					}
-					Button("Update Index") {
-						Task {
-							await IndexStore.shared.updateIndex()
-						}
+			IndexListRow(indexedDir: indexedDir)
+		}
+	}
+}
+
+struct IndexListRow: View {
+	
+	var indexedDir: IndexedDirectory
+	
+	var body: some View {
+		Text(indexedDir.url.lastPathComponent)
+			.tag(indexedDir)
+			.help(indexedDir.url.posixPath())
+			.contextMenu {
+				Button("Show in Finder") {
+					NSWorkspace.shared.activateFileViewerSelecting([indexedDir.url])
+				}
+				Button("Show Index in Finder") {
+					indexedDir.showIndexDirectory()
+				}
+				Button("Update Index") {
+					Task {
+						await IndexStore.shared.updateIndex()
 					}
 				}
-		}
-		.frame(maxHeight: 150)
+			}
 	}
 }
 

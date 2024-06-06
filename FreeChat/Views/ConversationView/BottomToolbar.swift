@@ -1,5 +1,5 @@
 //
-//  MessageTextField.swift
+//  BottomToolbar.swift
 //  FileChat
 //
 //  Created by Peter Sugihara on 8/5/23.
@@ -27,7 +27,9 @@ struct ChatStyle: TextFieldStyle {
 				LinearGradient(colors: [Color.textBackground, Color.textBackground.opacity(0.5)], startPoint: .leading, endPoint: .trailing)
 			)
 			.mask(rect)
-			.overlay(rect.stroke(.separator, lineWidth: 1)) /* border */
+//			.overlay(rect.stroke(.separator, lineWidth: 1)) /* border */
+			.overlay(rect.stroke(style: StrokeStyle(lineWidth: 1))
+				.fill(Color.gray))
 			.animation(focused ? .easeIn(duration: 0.2) : .easeOut(duration: 0.0), value: focused)
 	}
 	
@@ -47,11 +49,12 @@ struct BlurredView: NSViewRepresentable {
 	
 }
 
-struct MessageTextField: View {
+struct BottomToolbar: View {
 	
 	@State var input: String = ""
 	
 	@EnvironmentObject var conversationManager: ConversationManager
+	@EnvironmentObject var conversationController: ConversationController
 	@EnvironmentObject var indexStore: IndexStore
 	
 	var conversation: Conversation { conversationManager.currentConversation }
@@ -62,7 +65,7 @@ struct MessageTextField: View {
 	@FocusState private var focused: Bool
 
 	var buttonImage: some View {
-		let angle: Double = indexStore.isSelectingIndex ? -90 : 90
+		let angle: Double = conversationController.panelIsShown ? -90 : 90
 		return Image(systemName: "chevron.left.2").rotationEffect(Angle(degrees: angle)).background(Color.clear)
 	}
 	
@@ -96,7 +99,7 @@ struct MessageTextField: View {
 				.focused($focused)
 				.textFieldStyle(ChatStyle(focused: focused))
 				.submitLabel(.send)
-				.padding(.all, 10)
+				.padding([.vertical, .leading], 10)
 				.onAppear {
 					self.focused = true
 				}
@@ -122,8 +125,8 @@ struct MessageTextField: View {
 			if showNullState {
 				nullState.transition(.asymmetric(insertion: .push(from: .trailing), removal: .identity))
 			}
-			if indexStore.isSelectingIndex {
-				indexSelectionPanel
+			if conversationController.panelIsShown {
+				indexSelectionAndSettingsPanel
 			}
 			HStack {
 				inputField
@@ -134,41 +137,95 @@ struct MessageTextField: View {
 	}
 	
 	var togglePanelButton: some View {
-		HStack {
-			Image(systemName: "paperclip")
-				.background(Color.clear)
-			buttonImage
-		}
-		.font(.system(size: 16))
-		.bold()
-		.padding(4)
-		.background {
-			Capsule().fill(Color.blue)
-		}
-		.padding(.trailing)
-		.onTapGesture {
+		Button {
 			withAnimation(.spring(duration: 0.5)) {
-				indexStore.isSelectingIndex.toggle()
+				conversationController.panelIsShown.toggle()
+			}
+		} label: {
+			HStack(spacing: 3) {
+				Image(systemName: "paperclip")
+					.background(Color.clear)
+				Divider()
+					.frame(height: 22.5)
+				Image(systemName: "gearshape")
+					.background(Color.clear)
+				Divider()
+					.frame(height: 22.5)
+				buttonImage
+			}
+			.font(.system(size: 16))
+			.bold()
+			.padding(3.5)
+			.background {
+				Capsule()
+					.fill(Color.blue)
+					.background {
+						Capsule()
+							.stroke(style: StrokeStyle(lineWidth: 3.25))
+							.fill(Color.gray)
+					}
 			}
 		}
+		.buttonStyle(PlainButtonStyle())
+		.padding(.trailing)
+//		.onTapGesture {
+//			withAnimation(.spring(duration: 0.5)) {
+//				conversationController.panelIsShown.toggle()
+//			}
+//		}
 	}
 	
-	var indexSelectionPanel: some View {
+	var indexSelectionAndSettingsPanel: some View {
 		GroupBox {
-			VStack(alignment: .leading) {
-				Text(selectedDir == nil ? "Select a Folder" : "Selected 1 Folder")
-					.bold()
-					.font(.title2)
-				Divider()
-				IndexPicker(selectedDir: $selectedDir)
+			HSplitView {
+				indexSelectionList
+				conversationSettings
 			}
+			.frame(maxHeight: 250)
 			.padding(4)
+			.padding(.top, 2)
 		}
 		.background {
 			RoundedRectangle(cornerRadius: 8)
 				.fill(Color.textBackground)
 		}
 		.padding(.horizontal)
+	}
+	
+	var indexSelectionList: some View {
+		VStack {
+			Text(selectedDir == nil ? "Select a Folder" : "Selected 1 Folder")
+				.bold()
+				.font(.title2)
+			Divider()
+			IndexPicker(selectedDir: $selectedDir)
+		}
+	}
+	
+	var conversationSettings: some View {
+		VStack {
+			Text("Settings")
+				.bold()
+				.font(.title2)
+			Divider()
+			Form {
+				Section {
+					Toggle(isOn: $conversationController.readAloud, label: {
+						VStack(alignment: .leading) {
+							Text("Read Aloud")
+								.font(.title3)
+							Text("Read chatbot reply aloud")
+								.font(.caption)
+						}
+					})
+					.toggleStyle(.switch)
+				} header: {
+					Text("Accessibility")
+				}
+			}
+			
+		}
+		.formStyle(.grouped)
 	}
 	
 }

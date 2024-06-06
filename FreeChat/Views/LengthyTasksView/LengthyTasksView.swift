@@ -14,22 +14,18 @@ struct LengthyTasksView: View {
 	
 	var body: some View {
 		if !lengthyTasksController.uniqueTasks.isEmpty {
-			ScrollView {
-				VStack(spacing: 0) {
-					ForEach(lengthyTasksController.uniqueTasks) { task in
-						HStack(spacing: 0) {
-							Text(task.name)
-								.lineLimit(1)
-								.frame(maxWidth: 300)
-							LoadingAnimationView()
-						}
-						.frame(maxWidth: 320)
-					}
-				}
+			HStack(spacing: 10) {
+				Text(lengthyTasksController.uniqueTasks.last!.name)
+					.bold()
+					.shadow(radius: 5)
+				LoadingAnimationView()
 			}
-			.scrollIndicators(.never)
-			.frame(maxHeight: 30)
-			.padding(.top, 10)
+			.padding(7.5)
+			.background {
+				Capsule()
+					.stroke(style: StrokeStyle(lineWidth: 1))
+					.fill(Color.gray)
+			}
 		}
 	}
 	

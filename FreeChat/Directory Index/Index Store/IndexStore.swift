@@ -19,9 +19,6 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 	/// Shared singleton object
 	static let shared: IndexStore = IndexStore()
 	
-	/// Controls whether folder selecting panel is shown
-	@Published var isSelectingIndex: Bool = false
-	
 	/// Controls whether new messages can be sent
 	var isLoadingIndex: Bool = false
 	

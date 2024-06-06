@@ -18,7 +18,6 @@ struct LoadingAnimationView: View {
 				.trim(from: 0, to: to)
 				.stroke(style: .init(lineWidth: 5, lineCap: .round))
 				.foregroundColor(.secondary)
-				.frame(width: 10, height: 10)
 				.rotationEffect(.degrees(rotation))
 				.animation(
 					.linear(duration: 3)
@@ -36,6 +35,7 @@ struct LoadingAnimationView: View {
 						rotation = 360
 					}
 				}
+				.frame(width: 10, height: 10)
 		}
 	}
 }

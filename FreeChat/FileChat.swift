@@ -16,6 +16,7 @@ struct FileChatApp: App {
 	@StateObject private var conversationManager = ConversationManager.shared
 	@StateObject private var indexStore: IndexStore = IndexStore.shared
 	@StateObject private var lengthyTasksController: LengthyTasksController = LengthyTasksController.shared
+	@StateObject private var converationController: ConversationController = ConversationController.shared
 	
 	let persistenceController = PersistenceController.shared
 	
@@ -27,6 +28,7 @@ struct FileChatApp: App {
 				.environmentObject(conversationManager)
 				.environmentObject(indexStore)
 				.environmentObject(lengthyTasksController)
+				.environmentObject(converationController)
 				.onAppear {
 					NSWindow.allowsAutomaticWindowTabbing = false
 					let _ = NSApplication.shared.windows.map { $0.tabbingMode = .disallowed }
@@ -37,9 +39,9 @@ struct FileChatApp: App {
 				Button("New Chat") {
 					conversationManager.newConversation(viewContext: persistenceController.container.viewContext, openWindow: openWindow)
 				}.keyboardShortcut(KeyboardShortcut("N"))
-				Button("\(indexStore.isSelectingIndex ? "Hide": "Show") \"Select Folder\" Panel") {
+				Button("\(converationController.panelIsShown ? "Hide": "Show") \"Select Folder\" Panel") {
 					withAnimation(.spring()) {
-						indexStore.isSelectingIndex.toggle()
+						converationController.panelIsShown.toggle()
 					}
 				}.keyboardShortcut(KeyboardShortcut("P"))
 			}

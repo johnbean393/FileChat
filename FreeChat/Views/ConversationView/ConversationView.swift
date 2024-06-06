@@ -9,11 +9,13 @@ import SwiftUI
 import MarkdownUI
 import Foundation
 import SimilaritySearchKit
+import AVFoundation
 
 struct ConversationView: View, Sendable {
 	
 	@Environment(\.managedObjectContext) private var viewContext
 	@EnvironmentObject private var conversationManager: ConversationManager
+	@EnvironmentObject private var conversationController: ConversationController
 	
 	@AppStorage("selectedModelId") private var selectedModelId: String?
 	@AppStorage("systemPrompt") private var systemPrompt: String = DEFAULT_SYSTEM_PROMPT
@@ -32,6 +34,7 @@ struct ConversationView: View, Sendable {
 	
 	private static let SEND = NSDataAsset(name: "ESM_Perfect_App_Button_2_Organic_Simple_Classic_Game_Click")
 	private static let PING = NSDataAsset(name: "ESM_POWER_ON_SYNTH")
+	
 	let sendSound = NSSound(data: SEND!.data)
 	let receiveSound = NSSound(data: PING!.data)
 	
@@ -69,6 +72,9 @@ struct ConversationView: View, Sendable {
 	@State var llamaError: LlamaServerError? = nil
 	@State var showErrorAlert = false
 	
+	@State private var prevProgress: String = ""
+	@State private var readProgress: String = ""
+	
 	// Variables for directory context functionality
 	@State private var similarityIndex: SimilarityIndex?
 	
@@ -100,7 +106,25 @@ struct ConversationView: View, Sendable {
 			.onReceive(
 				agent.$pendingMessage.throttle(for: .seconds(0.1), scheduler: RunLoop.main, latest: true)
 			) { text in
+				// Store new text
 				pendingMessageText = text
+				// If "Read Aloud" is on
+				if conversationController.readAloud {
+					// Get new text
+					let newText: String = text
+						.replacingOccurrences(of: prevProgress, with: "")
+					// If new progress is large
+					if newText.count > 100 || newText.isEmpty {
+						// Define utterance
+						let utterance: AVSpeechUtterance = AVSpeechUtterance(string: newText)
+						utterance.rate = 0.525
+						utterance.preUtteranceDelay = 0.0
+						utterance.postUtteranceDelay = 0.0
+						speechSynthesizer.speak(utterance)
+						// Reset buffer
+						prevProgress = prevProgress + newText
+					}
+				}
 			}
 			.onReceive(
 				agent.$pendingMessage.throttle(for: .seconds(0.2), scheduler: RunLoop.main, latest: true)
@@ -112,7 +136,7 @@ struct ConversationView: View, Sendable {
 		}
 		.textSelection(.enabled)
 		.safeAreaInset(edge: .bottom, spacing: 0) {
-			MessageTextField { s in
+			BottomToolbar { s in
 				Task {
 					await submit(s)
 				}
