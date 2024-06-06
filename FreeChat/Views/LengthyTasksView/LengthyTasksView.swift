@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Shimmer
 
 struct LengthyTasksView: View {
 	
@@ -18,9 +19,10 @@ struct LengthyTasksView: View {
 				Text(lengthyTasksController.uniqueTasks.last!.name)
 					.bold()
 					.shadow(radius: 5)
+					.shimmering(bandSize: 0.9)
 				LoadingAnimationView()
 			}
-			.padding(7.5)
+			.padding(8)
 			.background {
 				Capsule()
 					.stroke(style: StrokeStyle(lineWidth: 1))

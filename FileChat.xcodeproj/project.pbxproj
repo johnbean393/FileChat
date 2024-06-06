@@ -24,6 +24,7 @@
 		2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */; };
 		2078A9442C11598400D9ACDD /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078A9432C11598400D9ACDD /* ConversationController.swift */; };
 		2085D6A92C0FEE5300774EDD /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D6A82C0FEE5300774EDD /* Extension+URL.swift */; };
+		20C3ED8A2C116D6F00097FBF /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 20C3ED892C116D6F00097FBF /* Shimmer */; };
 		A1156D312AD09FDD00081313 /* PromptTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */; };
 		A117219C2A7D7B70003B0358 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = A117219B2A7D7B70003B0358 /* MarkdownUI */; };
 		A12B52DE2AA5228100658707 /* EditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12B52DD2AA5228100658707 /* EditModels.swift */; };
@@ -216,6 +217,7 @@
 				A17A2E1F2A79A075006CDD90 /* EventSource in Frameworks */,
 				A137A38C2AB6B2F800BE1AE0 /* KeyboardShortcuts in Frameworks */,
 				A117219C2A7D7B70003B0358 /* MarkdownUI in Frameworks */,
+				20C3ED8A2C116D6F00097FBF /* Shimmer in Frameworks */,
 				2042425E2C0D5BEE00D173CF /* AppleGPUInfo in Frameworks */,
 				A13C8C5D2A8FEF0600EC18D8 /* Splash in Frameworks */,
 				204242632C0DB5C100D173CF /* BezelNotification in Frameworks */,
@@ -484,6 +486,7 @@
 				204242572C0D563100D173CF /* ExtensionKit */,
 				2042425D2C0D5BEE00D173CF /* AppleGPUInfo */,
 				204242622C0DB5C100D173CF /* BezelNotification */,
+				20C3ED892C116D6F00097FBF /* Shimmer */,
 			);
 			productName = Mantras;
 			productReference = A1F617222A782AA100F2048C /* FileChat.app */;
@@ -569,6 +572,7 @@
 				204242562C0D563100D173CF /* XCRemoteSwiftPackageReference "ExtensionKit" */,
 				2042425C2C0D5BEE00D173CF /* XCRemoteSwiftPackageReference "applegpuinfo" */,
 				204242612C0DB5C100D173CF /* XCRemoteSwiftPackageReference "BezelNotification" */,
+				20C3ED882C116D6F00097FBF /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = A1F617232A782AA100F2048C /* Products */;
 			projectDirPath = "";
@@ -1102,6 +1106,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		20C3ED882C116D6F00097FBF /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 		A117219A2A7D7B70003B0358 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
@@ -1161,6 +1173,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 204242612C0DB5C100D173CF /* XCRemoteSwiftPackageReference "BezelNotification" */;
 			productName = BezelNotification;
+		};
+		20C3ED892C116D6F00097FBF /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20C3ED882C116D6F00097FBF /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 		A117219B2A7D7B70003B0358 /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;

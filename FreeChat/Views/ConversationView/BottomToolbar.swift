@@ -27,7 +27,6 @@ struct ChatStyle: TextFieldStyle {
 				LinearGradient(colors: [Color.textBackground, Color.textBackground.opacity(0.5)], startPoint: .leading, endPoint: .trailing)
 			)
 			.mask(rect)
-//			.overlay(rect.stroke(.separator, lineWidth: 1)) /* border */
 			.overlay(rect.stroke(style: StrokeStyle(lineWidth: 1))
 				.fill(Color.gray))
 			.animation(focused ? .easeIn(duration: 0.2) : .easeOut(duration: 0.0), value: focused)
@@ -126,7 +125,7 @@ struct BottomToolbar: View {
 				nullState.transition(.asymmetric(insertion: .push(from: .trailing), removal: .identity))
 			}
 			if conversationController.panelIsShown {
-				indexSelectionAndSettingsPanel
+				BottomToolbarPanel(selectedDir: $selectedDir)
 			}
 			HStack {
 				inputField
@@ -168,14 +167,17 @@ struct BottomToolbar: View {
 		}
 		.buttonStyle(PlainButtonStyle())
 		.padding(.trailing)
-//		.onTapGesture {
-//			withAnimation(.spring(duration: 0.5)) {
-//				conversationController.panelIsShown.toggle()
-//			}
-//		}
 	}
 	
-	var indexSelectionAndSettingsPanel: some View {
+}
+
+struct BottomToolbarPanel: View {
+	
+	@EnvironmentObject var conversationController: ConversationController
+	
+	@Binding var selectedDir: IndexedDirectory?
+	
+	var body: some View {
 		GroupBox {
 			HSplitView {
 				indexSelectionList
