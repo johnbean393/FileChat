@@ -4,6 +4,7 @@ Chat with LLMs on your Mac without installing any other software. Every conversa
 
 - Customize persona and expertise by changing the system prompt
 - Try any llama.cpp compatible GGUF model
+- Run a Shortcut just by chatting to automate your workflow
 - No internet connection required, all local (with the option to connect to a remote model)
 
 **Note: FileChat is an extended version of FreeChat. You can visit the original [here](https://github.com/psugihara/FreeChat)**
