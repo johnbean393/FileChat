@@ -17,12 +17,13 @@ struct FileChatApp: App {
 	@StateObject private var indexStore: IndexStore = IndexStore.shared
 	@StateObject private var lengthyTasksController: LengthyTasksController = LengthyTasksController.shared
 	@StateObject private var converationController: ConversationController = ConversationController.shared
+	@StateObject private var actionManager: ActionManager = ActionManager.shared
 	
 	let persistenceController = PersistenceController.shared
 	
 	var body: some Scene {
 		
-		Window(Text("FileChat"), id: "main") {
+		WindowGroup {
 			ContentView()
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
 				.environmentObject(conversationManager)
@@ -34,6 +35,7 @@ struct FileChatApp: App {
 					let _ = NSApplication.shared.windows.map { $0.tabbingMode = .disallowed }
 				}
 		}
+		.handlesExternalEvents(matching: Set(arrayLiteral: "defaultView"))
 		.commands {
 			CommandMenu("Chat") {
 				Button("New Chat") {
@@ -63,6 +65,12 @@ struct FileChatApp: App {
 				.keyboardShortcut("f", modifiers: [.command, .control])
 			})
 		}
+		
+		WindowGroup("Actions") {
+			ActionsView()
+				.environmentObject(actionManager)
+		}
+		.handlesExternalEvents(matching: Set(arrayLiteral: "actions"))
 		
 		Settings {
 			SettingsView()

@@ -10,7 +10,7 @@ import KeyboardShortcuts
 import AVFoundation
 
 extension KeyboardShortcuts.Name {
-  static let summonFileChat = Self("summonFileChat")
+	static let summonFileChat = Self("summonFileChat")
 }
 
 let speechSynthesizer: AVSpeechSynthesizer = {
