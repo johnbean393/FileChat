@@ -29,7 +29,16 @@ struct ActionDetailView: View {
 			} header: {
 				Text("Configuration")
 			}
-			testing
+			Section {
+				testing
+			} header: {
+				Text("Testing")
+			}
+			Section {
+				dangerZone
+			} header: {
+				Text("Danger Zone")
+			}
 		}
 		.formStyle(.grouped)
 		.onChange(of: selectedAction) { _ in
@@ -141,61 +150,84 @@ struct ActionDetailView: View {
 	}
 	
 	var testing: some View {
-		Section {
-			Group {
-				HStack {
-					VStack(alignment: .leading) {
-						Text("Test")
-							.font(.title3)
-							.bold()
-						Text("Run the shortcut")
-							.font(.caption)
-					}
-					Spacer()
-					// Button to test run
-					Button {
-						// Get input
-						if inputNeeded {
-							askForInput = true
-						} else {
-							// Else, run shortcut without params
-							do {
-								try action.run(input: nil)
-							} catch {
-								// Send alert
-								let alert: NSAlert = NSAlert()
-								alert.messageText = "Error: \"\(error)\"?"
-								alert.addButton(withTitle: "OK")
-								let _ = alert.runModal()
-							}
-						}
-					} label: {
-						Label("Test", systemImage: "play.fill")
-					}
+		Group {
+			HStack {
+				VStack(alignment: .leading) {
+					Text("Test")
+						.font(.title3)
+						.bold()
+					Text("Run the action")
+						.font(.caption)
 				}
-				HStack {
-					VStack(alignment: .leading) {
-						Text("Debug")
-							.font(.title3)
-							.bold()
-						Text("Find and automatically fix issues")
-							.font(.caption)
-					}
-					Spacer()
-					// Button to debug
-					Button {
+				Spacer()
+				// Button to test run
+				Button {
+					// Get input
+					if inputNeeded {
+						askForInput = true
+					} else {
+						// Else, run shortcut without params
 						do {
-							try action.locateShortcut()
+							try action.run(input: nil)
 						} catch {
-							print("Error locating shortcut:", error)
+							// Send alert
+							let alert: NSAlert = NSAlert()
+							alert.messageText = "Error: \"\(error)\"?"
+							alert.addButton(withTitle: "OK")
+							let _ = alert.runModal()
 						}
-					} label: {
-						Label("Debug", systemImage: "mappin")
 					}
+				} label: {
+					Label("Test", systemImage: "play.fill")
 				}
 			}
-		} header: {
-			Text("Testing")
+			HStack {
+				VStack(alignment: .leading) {
+					Text("Debug")
+						.font(.title3)
+						.bold()
+					Text("Find and automatically fix issues")
+						.font(.caption)
+				}
+				Spacer()
+				// Button to debug
+				Button {
+					do {
+						try action.locateShortcut()
+					} catch {
+						print("Error locating shortcut:", error)
+					}
+				} label: {
+					Label("Debug", systemImage: "mappin")
+				}
+			}
+		}
+	}
+	
+	var dangerZone: some View {
+		HStack {
+			VStack(alignment: .leading) {
+				Text("Delete")
+					.font(.title3)
+					.bold()
+				Text("Deletes the action")
+					.font(.caption)
+			}
+			Spacer()
+			// Button to delete action
+			Button {
+				// Send alert
+				let alert: NSAlert = NSAlert()
+				alert.messageText = "Are you sure you want to delete this action?"
+				alert.addButton(withTitle: "Cancel")
+				alert.addButton(withTitle: "OK")
+				if alert.runModal() == .alertSecondButtonReturn {
+					actionManager.removeAction(action)
+					selectedAction = nil
+				}
+			} label: {
+				Label("Delete", systemImage: "trash")
+			}
 		}
 	}
 	
