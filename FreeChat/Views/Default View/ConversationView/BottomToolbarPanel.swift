@@ -53,7 +53,7 @@ struct BottomToolbarPanel: View {
 				Section {
 					HStack {
 						VStack(alignment: .leading) {
-							Text("Shortcuts")
+							Text("Shortcuts (Beta)")
 								.font(.title3)
 								.bold()
 							Text("Add or remove actions")

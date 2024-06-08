@@ -107,17 +107,23 @@ struct Action: Identifiable, Codable, Equatable, Hashable {
 						alert.messageText = "You renamed your shortcut, which broke the link! A link has now been reestablished."
 						alert.addButton(withTitle: "OK")
 						let _ = alert.runModal()
-						break
+						return
 					} else {
 						// Show issue fixed
 						let alert: NSAlert = NSAlert()
 						alert.messageText = "No issues detected."
 						alert.addButton(withTitle: "OK")
 						let _ = alert.runModal()
+						return
 					}
 				}
 			}
 		}
+		// Show issue not fixed if shortcut was never found
+		let alert: NSAlert = NSAlert()
+		alert.messageText = "The shortcut could not be located."
+		alert.addButton(withTitle: "OK")
+		let _ = alert.runModal()
 	}
 	
 	enum InputType: Codable, CaseIterable {
