@@ -45,7 +45,7 @@ struct BottomToolbarPanel: View {
 	
 	var conversationSettings: some View {
 		VStack {
-			Text("Settings")
+			Text("Chat Settings")
 				.bold()
 				.font(.title2)
 			Divider()

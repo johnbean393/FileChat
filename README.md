@@ -12,7 +12,8 @@ Chat with LLMs on your Mac without installing any other software. Every conversa
 ## Installation
 
 **Requirements**
-An Apple Silicon Mac with RAM ≥ 16 GB
+- An Apple Silicon Mac
+- RAM ≥ 16 GB
 
 **Prebuilt Package**
 - Download the packages from [Releases](https://github.com/johnbean393/FileChat/releases), and open it. Note that since the package is not notarized, you will need to enable it in System Settings. 

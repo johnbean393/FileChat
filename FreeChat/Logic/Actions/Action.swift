@@ -98,13 +98,23 @@ struct Action: Identifiable, Codable, Equatable, Hashable {
 			if shortcut[subtitle] != nil && shortcut[lastSynced] != nil {
 				// If shortcuts match
 				if shortcut[id] == self.shortcut.id.uuidString {
-					self.shortcut.name = shortcut[name]
-					// Show issue fixed
-					let alert: NSAlert = NSAlert()
-					alert.messageText = "You renamed your shortcut, which broke the link! A link has now been reestablished."
-					alert.addButton(withTitle: "OK")
-					let _ = alert.runModal()
-					break
+					// If there was an issue
+					if self.shortcut.name != shortcut[name] {
+						// Fix it
+						self.shortcut.name = shortcut[name]
+						// Show issue fixed
+						let alert: NSAlert = NSAlert()
+						alert.messageText = "You renamed your shortcut, which broke the link! A link has now been reestablished."
+						alert.addButton(withTitle: "OK")
+						let _ = alert.runModal()
+						break
+					} else {
+						// Show issue fixed
+						let alert: NSAlert = NSAlert()
+						alert.messageText = "No issues detected."
+						alert.addButton(withTitle: "OK")
+						let _ = alert.runModal()
+					}
 				}
 			}
 		}
