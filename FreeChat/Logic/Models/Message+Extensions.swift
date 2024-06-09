@@ -27,24 +27,34 @@ extension Message {
 		conversation.lastMessageAt = record.createdAt
 		record.fromId = fromId
 		
-		// Modify prompt
-		var prompt: String = text
 		// If SimilarityIndex is loaded
 		if IndexStore.shared.similarityIndex != nil {
-			// Add info to prompt
-			prompt = await IndexStore.shared.search(text: text)
+			// Add info & actions to prompt
+			let promptWithInfo: String = await IndexStore.shared.search(text: text)
+			// Add actions
+			let promptWithActions: String = await ActionManager.shared.findActions(text: promptWithInfo)
+			// Send back on main thread
+			record.text = promptWithActions
+			await MainActor.run {
+				do {
+					try ctx.save()
+				} catch { print(error) }
+			}
+			// Return result
+			return record
+		} else {
+			// Add actions to prompt
+			let promptWithActions: String = await ActionManager.shared.findActions(text: text)
+			// Send back on main thread
+			record.text = promptWithActions
+			await MainActor.run {
+				do {
+					try ctx.save()
+				} catch { print(error) }
+			}
+			// Return result
+			return record
 		}
-		// Add actions to prompt
-		prompt = await ActionManager.shared.findActions(text: text)
-		// Send back on main thread
-		record.text = prompt
-		await MainActor.run {
-			do {
-				try ctx.save()
-			} catch { print(error) }
-		}
-		// Return result
-		return record
 	}
 	
 	public override func willSave() {

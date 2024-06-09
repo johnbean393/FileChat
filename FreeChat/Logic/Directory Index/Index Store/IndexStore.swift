@@ -155,7 +155,9 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 		let maxResultsCount: Int = 5
 		// Initiate search
 		let threshhold: Float = 7.5
+//		print("itemsInIndex:", IndexStore.shared.similarityIndex!.indexItems.map({ $0.text }))
 		let searchResults: [SimilarityIndex.SearchResult] = await IndexStore.shared.similarityIndex!.search(text)
+//		print("searchResults:", searchResults.map({ $0.text }))
 //		print("searchResultsScores:", searchResults.map({ abs(100 - abs($0.score)) }))
 		let filteredResults: [SimilarityIndex.SearchResult] =
 		Array(
@@ -166,6 +168,7 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 					max(searchResults.filter({ abs(100 - abs($0.score)) <= threshhold }).count - maxResultsCount, 0)
 				)
 		)
+//		print("filteredResultsCount:", filteredResults.count)
 //		print("filteredResultsScores:", filteredResults.map({ abs(100 - abs($0.score)) }))
 		// If filtered results is blank
 		if filteredResults.isEmpty {
@@ -175,12 +178,13 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 			// Else, continue
 			let sourcesText: String = filteredResults.map { "\($0.text)\n \($0.metadata["source"] ?? "")" }.joined(separator: "\n")
 			// Process text to add search results
-			return """
+			var modifiedPrompt: String = """
 \(text)
 
 Here is some information that may or may not be relevant to my request:
 "\(sourcesText)"
 """
+			return modifiedPrompt
 		}
 	}
 

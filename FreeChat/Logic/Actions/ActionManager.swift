@@ -108,9 +108,9 @@ class ActionManager: ValueDataModel<Action> {
 		// Calculate mean
 		let mean: Float = Float(searchResults.map({ $0.score }).reduce(0, +)) / Float(searchResults.count)
 		// Print debug info
-		print("searchResults:", searchResults.map({ $0.text }))
-		print("searchResultsScores:", searchResults.map({ $0.score }))
-		print("searchResultsDistanceFromStdDev:", searchResults.map({ (abs($0.score - mean) / stdDev) }))
+//		print("searchResults:", searchResults.map({ $0.text }))
+//		print("searchResultsScores:", searchResults.map({ $0.score }))
+//		print("searchResultsDistanceFromStdDev:", searchResults.map({ (abs($0.score - mean) / stdDev) }))
 		// Filter results
 		let filteredResults: [SimilarityIndex.SearchResult] =
 		Array(
