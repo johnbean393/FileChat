@@ -11,7 +11,7 @@ import SimilaritySearchKit
 
 extension Message {
 	
-	static let USER_SPEAKER_ID = "### User"
+	static let USER_SPEAKER_ID = "`## User"
 	
 	static func create(
 		text: String,

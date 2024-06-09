@@ -9,6 +9,7 @@ import Foundation
 import AppKit
 import ExtensionKit
 import SQLite
+import SimilaritySearchKit
 
 struct Action: Identifiable, Codable, Equatable, Hashable {
 	
@@ -133,6 +134,18 @@ struct Action: Identifiable, Codable, Equatable, Hashable {
 	
 	enum ActionRunError: Error {
 		case inputError
+	}
+	
+	var baseScore: Float {
+		get async {
+			let similarityIndex: SimilarityIndex = await SimilarityIndex(metric: CosineSimilarity())
+			await similarityIndex.addItem(
+				id: self.shortcut.id.uuidString,
+				text: self.shortcut.samplePrompt,
+				metadata: ["baseScore": ""]
+			)
+			return await similarityIndex.search("filler").first!.score
+		}
 	}
 	
 }

@@ -307,9 +307,9 @@
 		209764BA2C12A993001C3BF8 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				209764B82C12A98B001C3BF8 /* ActionManager.swift */,
 				209764BB2C12AA31001C3BF8 /* Action.swift */,
 				209764C22C12C3A8001C3BF8 /* Shortcut.swift */,
+				209764B82C12A98B001C3BF8 /* ActionManager.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";

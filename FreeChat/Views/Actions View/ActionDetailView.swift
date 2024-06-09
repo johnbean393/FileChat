@@ -228,6 +228,7 @@ struct ActionDetailView: View {
 			} label: {
 				Label("Delete", systemImage: "trash")
 			}
+			.tint(Color.red)
 		}
 	}
 	

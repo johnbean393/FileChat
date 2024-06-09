@@ -100,21 +100,28 @@ class ActionManager: ValueDataModel<Action> {
 		// Max number of search results
 		let maxResultsCount: Int = 3
 		// Initiate search
-		let threshhold: Float = 30
+		let threshold: Float = 1.1
 		let searchResults: [SimilarityIndex.SearchResult] = await similarityIndex.search(text)
+		// Calcuate standard deviation
+		let expression: NSExpression = NSExpression(forFunction: "stddev:", arguments: [NSExpression(forConstantValue: searchResults.map({ $0.score }))])
+		let stdDev: Float = Float("\(expression.expressionValue(with: nil, context: nil) ?? 7)")!
+		// Calculate mean
+		let mean: Float = Float(searchResults.map({ $0.score }).reduce(0, +)) / Float(searchResults.count)
+		// Print debug info
 		print("searchResults:", searchResults.map({ $0.text }))
-		print("searchResultsRawScores:", searchResults.map({ $0.score }))
-		print("searchResultsScores:", searchResults.map({ abs(50 - abs($0.score)) }))
+		print("searchResultsScores:", searchResults.map({ $0.score }))
+		print("searchResultsDistanceFromStdDev:", searchResults.map({ (abs($0.score - mean) / stdDev) }))
+		// Filter results
 		let filteredResults: [SimilarityIndex.SearchResult] =
 		Array(
 			searchResults
-				.sorted(by: { abs(50 - abs($0.score)) <= abs(50 - abs($1.score)) })
-				.filter({ abs(50 - abs($0.score)) <= threshhold })
+				.filter({ (abs($0.score - mean) / stdDev) >= threshold })
+				.sorted(by: { (abs($0.score - mean) / stdDev) <= (abs($1.score - mean) / stdDev) })
 				.dropLast(
-					max(searchResults.filter({ abs(50 - abs($0.score)) <= threshhold }).count - maxResultsCount, 0)
+					max(searchResults.filter({ (abs($0.score - mean) / stdDev) >= threshold }).count - maxResultsCount, 0)
 				)
 		)
-		print("filteredResultsScores:", filteredResults.map({ abs(50 - abs($0.score)) }))
+//		print("filteredResultsScores:", filteredResults.map({ abs(Float($0.metadata["baseScore"]!)! - abs($0.score)) }))
 		// Match search results to actions
 		var actions: [Action] = []
 		for result in filteredResults {
@@ -133,6 +140,7 @@ class ActionManager: ValueDataModel<Action> {
 			return text
 		} else {
 			// Else, continue
+//		let actions: [Action] = Self.shared.values
 			let sourcesText: String = actions.map { action in
 				let paramDescription: String = action.inputDescription.isEmpty ? "Blank Parameter" : action.inputDescription
 				return "`\(action.shortcut.name)(\(paramDescription))`"
@@ -141,7 +149,7 @@ class ActionManager: ValueDataModel<Action> {
 			return """
 \(text)
 
-You can execute the following commands by including "`NAME OF ACTION(TEXT VALUE OF PARAMETER)`" in your response:
+You can execute the following commands by making your response `NAME OF ACTION(TEXT VALUE OF PARAMETER)`:
 \(sourcesText)
 """
 		}
