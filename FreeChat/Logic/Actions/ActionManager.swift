@@ -149,7 +149,7 @@ class ActionManager: ValueDataModel<Action> {
 			return """
 \(text)
 
-You can execute the following commands by making your response `NAME OF ACTION(TEXT VALUE OF PARAMETER)`:
+If I asked you to, you can execute the following commands by making your response `NAME OF ACTION(TEXT VALUE OF PARAMETER)`:
 \(sourcesText)
 """
 		}
