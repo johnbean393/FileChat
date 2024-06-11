@@ -234,7 +234,7 @@ actor LlamaServer {
 			onFinish(text: response)
 		}
 		
-		// adding a trailing quote or space is a common mistake with the smaller model output
+		// Adding a trailing quote or space is a common mistake with the smaller model output
 		let cleanText = removeUnmatchedTrailingQuote(response).trimmingCharacters(
 			in: .whitespacesAndNewlines)
 		
@@ -252,30 +252,34 @@ actor LlamaServer {
 	func onFinish(text: String) {
 		// Run shortcuts if applicable
 		// Find command
-		let textComponents: [String] = text.split(separator: "`").map({ String($0) })
-		// Exit if too many commands issued
-		if textComponents.count > 3 {
-			return
-		}
-		// Iterate through components and find command
-		var command: String? = nil
+		let textComponents: [String] = text.split(separator: "(").map({
+			String($0).trimmingCharacters(in: .whitespacesAndNewlines)
+		})
+		// Iterate through components and find first command
+		var param: String? = nil
 		var action: Action? = nil
-		for textComponent in textComponents {
+		for index in Array(textComponents.dropLast(1)).indices {
+			let currComponent: String = textComponents[index]
+			let nextComponent: String = textComponents[index + 1]
 			for currAction in ActionManager.shared.values {
-				if textComponent.hasPrefix("\(currAction.shortcut.name)(") && textComponent.hasSuffix(")") {
-					command = textComponent
+				if currComponent.hasSuffix("\(currAction.shortcut.name)") {
+					print("Action \(currAction.shortcut.name) located")
+					if let extractedParam = nextComponent.split(separator: ")").first {
+						param = String(extractedParam)
+					} else {
+						param = ""
+					}
 					action = currAction
 					break
 				}
 			}
 		}
 		// Unwrap command
-		if let command = command, let action = action {
+		if let param = param, let action = action {
 			do {
 				// Check if input is needed
 				if action.inputType == .textInput {
-					let parameter: String? = command.slice(from: "(", to: ")")
-					try action.run(input: parameter)
+					try action.run(input: param)
 				} else {
 					try action.run(input: nil)
 				}

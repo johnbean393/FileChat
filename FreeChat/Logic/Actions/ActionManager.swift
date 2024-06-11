@@ -100,7 +100,7 @@ class ActionManager: ValueDataModel<Action> {
 		// Max number of search results
 		let maxResultsCount: Int = 3
 		// Initiate search
-		let threshold: Float = 1.1
+		let threshold: Float = 1.3
 		let searchResults: [SimilarityIndex.SearchResult] = await similarityIndex.search(text)
 		// Calcuate standard deviation
 		let expression: NSExpression = NSExpression(forFunction: "stddev:", arguments: [NSExpression(forConstantValue: searchResults.map({ $0.score }))])
@@ -149,8 +149,9 @@ class ActionManager: ValueDataModel<Action> {
 			return """
 \(text)
 
-If I asked you to, you can execute the following commands by making your response `NAME OF ACTION(TEXT VALUE OF PARAMETER)`:
+If I asked you to, you can execute the following commands by making your response "`NAME OF COMMAND(TEXT VALUE OF PARAMETER)`":
 \(sourcesText)
+If I didn't ask you to execute a command, never even mention a command.
 """
 		}
 	}
