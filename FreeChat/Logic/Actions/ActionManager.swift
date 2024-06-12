@@ -149,6 +149,7 @@ class ActionManager: ValueDataModel<Action> {
 			return """
 \(text)
 
+
 If I asked you to, you can execute the following commands by making your response "`NAME OF COMMAND(TEXT VALUE OF PARAMETER)`":
 \(sourcesText)
 If I didn't ask you to execute a command, never even mention a command.

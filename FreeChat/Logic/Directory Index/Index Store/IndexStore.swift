@@ -176,10 +176,36 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 			return text
 		} else {
 			// Else, continue
-			let sourcesText: String = filteredResults.map { "\($0.text)\n \($0.metadata["itemIndex"] ?? "")" }.joined(separator: "\n")
+			// Get full text
+			let resultsWithIndexes: [(index: Int, result: SearchResult)] = filteredResults.map({ result in
+				let index: Int = Int(result.metadata["itemIndex"]!)!
+				return (index, result)
+			})
+			let fullResults: [String] = resultsWithIndexes.map({ indexedResult in
+				let result: SearchResult = indexedResult.result
+				// Get preceding text
+				let preData: [String: String] = {
+					var metadata: [String: String] = result.metadata
+					metadata["itemIndex"] = String(indexedResult.index - 1)
+					return metadata
+				}()
+				let preText: String = IndexStore.shared.similarityIndex!.indexItems.filter({ $0.metadata == preData }).first?.text ?? ""
+				// Get following text
+				let postData: [String: String] = {
+					var metadata: [String: String] = result.metadata
+					metadata["itemIndex"] = String(indexedResult.index + 1)
+					return metadata
+				}()
+				let postText: String = IndexStore.shared.similarityIndex!.indexItems.filter({ $0.metadata == postData }).first?.text ?? ""
+				// Full text
+				return "\(preText)\(result.text)\(postText)"
+			})
+			// Join to prompt
+			let sourcesText: String = fullResults.map { "\($0)\n" }.joined(separator: "\n")
 			// Process text to add search results
 			let modifiedPrompt: String = """
 \(text)
+
 
 Here is some information that may or may not be relevant to my request:
 "\(sourcesText)"
