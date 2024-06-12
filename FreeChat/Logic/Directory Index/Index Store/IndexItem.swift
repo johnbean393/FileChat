@@ -114,7 +114,7 @@ extension IndexedDirectory {
 			// Extract text from file
 			let fileText: String = await (try? TextExtractor.extractText(url: url)) ?? ""
 			// Split text
-			let splitTexts: [String] = fileText.split(every: 512)
+			let splitTexts: [String] = fileText.split(every: 1024)
 			// Init new similarity index
 			let similarityIndex: SimilarityIndex = await SimilarityIndex(
 				model: DistilbertEmbeddings(),
@@ -127,7 +127,7 @@ extension IndexedDirectory {
 				await similarityIndex.addItem(
 					id: indexItemId,
 					text: splitText,
-					metadata: ["Source": "\(filename)"]
+					metadata: ["source": "\(filename)", "itemIndex": "\(index)"]
 				)
 			}
 			// Save index

@@ -176,9 +176,9 @@ class IndexStore: ValueDataModel<IndexedDirectory> {
 			return text
 		} else {
 			// Else, continue
-			let sourcesText: String = filteredResults.map { "\($0.text)\n \($0.metadata["source"] ?? "")" }.joined(separator: "\n")
+			let sourcesText: String = filteredResults.map { "\($0.text)\n \($0.metadata["itemIndex"] ?? "")" }.joined(separator: "\n")
 			// Process text to add search results
-			var modifiedPrompt: String = """
+			let modifiedPrompt: String = """
 \(text)
 
 Here is some information that may or may not be relevant to my request:
