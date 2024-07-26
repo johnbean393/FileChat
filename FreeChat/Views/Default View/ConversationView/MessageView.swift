@@ -36,7 +36,7 @@ struct MessageView: View {
 			if let userPromptAndCommands = result.split(separator: "\n\n\nHere is some information that may or may not be relevant to my request:").first {
 				result = String(userPromptAndCommands)
 			}
-			if let userPrompt = result.split(separator: "\n\n\nIf I asked you to, you can execute the following commands by making your response \"`NAME OF COMMAND(TEXT VALUE OF PARAMETER)`\":").first {
+			if let userPrompt = result.split(separator: "\n\n\nIf relevant, you can execute the following system commands by making your response \"`NAME OF COMMAND(TEXT VALUE OF PARAMETER)`\":").first {
 				result = String(userPrompt)
 			}
 		}

@@ -150,9 +150,9 @@ class ActionManager: ValueDataModel<Action> {
 \(text)
 
 
-If I asked you to, you can execute the following commands by making your response "`NAME OF COMMAND(TEXT VALUE OF PARAMETER)`":
+If relevant, you can execute the following system commands by making your response "`NAME OF COMMAND(TEXT VALUE OF PARAMETER)`":
 \(sourcesText)
-If I didn't ask you to execute a command, never even mention a command.
+Else, just respond to my request, ignoring system commands.
 """
 		}
 	}
