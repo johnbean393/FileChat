@@ -1,5 +1,6 @@
 @preconcurrency import EventSource
 import Foundation
+import ExtensionKit
 import SwiftUI
 import os.lock
 
@@ -109,10 +110,11 @@ actor LlamaServer {
 		
 		let startTime = DispatchTime.now()
 		
-		process.executableURL = Bundle.main.url(forAuxiliaryExecutable: "freechat-server")
+		process.executableURL = Bundle.main.resourceURL?.appendingPathComponent("freechat-server")
+		
 		let processes = ProcessInfo.processInfo.activeProcessorCount
 		
-		let gpuLayers: Int = 35
+		let gpuLayers: Int = 99
 		
 		process.arguments = [
 			"--model", modelPath,
@@ -343,9 +345,9 @@ actor LlamaServer {
 		var nPredicted: Int?
 	}
 	
-	enum ChatRole: Codable {
-		case system
-		case user
+	enum ChatRole: String, Codable {
+		case system = "system"
+		case user = "user"
 	}
 	
 	struct ChatMessage: Codable {

@@ -26,6 +26,7 @@ struct ConversationView: View, Sendable {
 	@AppStorage("serverHost") private var serverHost: String?
 	@AppStorage("serverPort") private var serverPort: String?
 	@AppStorage("serverTLS") private var serverTLS: Bool?
+	@AppStorage("fontSizeOption") private var fontSizeOption: Int = 14
 	
 	@FetchRequest(
 		sortDescriptors: [NSSortDescriptor(keyPath: \Model.size, ascending: true)],
@@ -120,6 +121,9 @@ struct ConversationView: View, Sendable {
 			}
 		}
 		.textSelection(.enabled)
+		.font(.system(
+			size: CGFloat(Float(fontSizeOption) * 0.8)
+		))
 		.safeAreaInset(edge: .bottom, spacing: 0) {
 			BottomToolbar { s in
 				Task {

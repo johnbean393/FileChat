@@ -96,39 +96,3 @@ struct WelcomeSheet: View {
     downloadManager.startDownload(url: Model.defaultModelUrl)
   }
 }
-
-#Preview {
-  @State var isPresented: Bool = true
-  @StateObject var conversationManager = ConversationManager.shared
-  
-  return WelcomeSheet(isPresented: $isPresented)
-    .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    .environmentObject(conversationManager)
-}
-
-#Preview("Success") {
-  @State var isPresented: Bool = true
-  @StateObject var conversationManager = ConversationManager.shared
-  
-  let ctx = PersistenceController.preview.container.viewContext
-  let m = Model(context: ctx)
-  m.name = "spicyboros_7b.gguff"
-  
-  return WelcomeSheet(isPresented: $isPresented)
-    .environment(\.managedObjectContext, ctx)
-    .environmentObject(conversationManager)
-}
-
-// works but generates deprecation warning
-//#Preview("Loading") {
-//  @State var isPresented: Bool = true
-//  @StateObject var conversationManager = ConversationManager.shared
-//
-//  let ctx = PersistenceController.preview.container.viewContext
-//
-//  DownloadManager.shared.tasks.append(URLSessionTask())
-//
-//  return WelcomeSheet(isPresented: $isPresented)
-//    .environment(\.managedObjectContext, ctx)
-//    .environmentObject(conversationManager)
-//}

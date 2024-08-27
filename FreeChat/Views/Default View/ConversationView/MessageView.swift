@@ -5,14 +5,15 @@
 //  Created by Peter Sugihara on 8/4/23.
 //
 
-import SwiftUI
 import MarkdownUI
 import Splash
+import SwiftUI
 
 struct MessageView: View {
-	
 	@Environment(\.colorScheme) private var colorScheme
 	@EnvironmentObject private var conversationManager: ConversationManager
+	
+	@AppStorage("fontSizeOption") var fontSizeOption: Int = 14
 	
 	@ObservedObject var m: Message
 	let overrideText: String // for streaming replies
@@ -44,12 +45,10 @@ struct MessageView: View {
 	}
 	
 	var infoText: some View {
-		
 		(agentStatus == .coldProcessing && overrideText.isEmpty
 		 ? Text("Warming up...")
 		 : Text(m.createdAt ?? Date(), formatter: messageTimestampFormatter))
-		.font(.caption)
-		
+		.font(.system(size: CGFloat(Float(fontSizeOption) * 0.8)))
 	}
 	
 	var info: String {
@@ -73,7 +72,8 @@ struct MessageView: View {
 		var parts: [String] = []
 		
 		if let ggufCut = try? Regex(".gguf$"),
-		   let modelName = m.modelName?.replacing(ggufCut, with: "") {
+		   let modelName = m.modelName?.replacing(ggufCut, with: "")
+		{
 			parts.append("\(modelName)")
 		}
 		if m.predictedPerSecond > 0 {
@@ -199,9 +199,10 @@ struct MessageView: View {
 				Group {
 					if m.fromId == Message.USER_SPEAKER_ID {
 						Text(messageText)
+							.font(.system(size: CGFloat(fontSizeOption)))
 					} else {
 						Markdown(messageText)
-							.markdownTheme(.fileChat)
+							.markdownTheme(.freeChat)
 							.markdownCodeSyntaxHighlighter(.splash(theme: self.theme))
 					}
 				}
@@ -227,7 +228,7 @@ struct MessageView: View {
 	
 	private var theme: Splash.Theme {
 		// NOTE: We are ignoring the Splash theme font
-		switch self.colorScheme {
+		switch colorScheme {
 			case ColorScheme.dark:
 				return .wwdc17(withFont: .init(size: 16))
 			default:

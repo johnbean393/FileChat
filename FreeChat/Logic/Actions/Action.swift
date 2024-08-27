@@ -88,11 +88,11 @@ struct Action: Identifiable, Codable, Equatable, Hashable {
 		// Define table structure
 		let database: Connection = try Connection(dbUrl.posixPath())
 		let shortcutsTable: Table = Table("ZSHORTCUT")
-		let id = Expression<String>("ZWORKFLOWID")
-		let name = Expression<String>("ZNAME")
-		let description = Expression<String?>("ZACTIONSDESCRIPTION")
-		let subtitle = Expression<String?>("ZWORKFLOWSUBTITLE")
-		let lastSynced = Expression<Int?>("ZLASTSYNCEDHASH")
+		let id = Expression<String>(value: "ZWORKFLOWID")
+		let name = Expression<String>(value: "ZNAME")
+		let description = Expression<String?>(value: "ZACTIONSDESCRIPTION")
+		let subtitle = Expression<String?>(value: "ZWORKFLOWSUBTITLE")
+		let lastSynced = Expression<Int?>(value: "ZLASTSYNCEDHASH")
 		// Get and save shortcut info
 		for shortcut in try database.prepare(shortcutsTable) {
 			// If shortcut is not deleted
