@@ -30,11 +30,15 @@ extension Message {
 		// If SimilarityIndex is loaded
 		if IndexStore.shared.similarityIndex != nil {
 			// Add info & actions to prompt
-			let promptWithInfo: String = await IndexStore.shared.search(text: text)
+			var finalPrompt: String = await IndexStore.shared.search(text: text)
 			// Add actions
-			let promptWithActions: String = await ActionManager.shared.findActions(text: promptWithInfo)
+			if UserDefaults.standard.bool(forKey: "useActions") {
+				finalPrompt = await ActionManager.shared.findActions(
+					text: finalPrompt
+				)
+			}
 			// Send back on main thread
-			record.text = promptWithActions
+			record.text = finalPrompt
 			await MainActor.run {
 				do {
 					try ctx.save()
@@ -44,9 +48,14 @@ extension Message {
 			return record
 		} else {
 			// Add actions to prompt
-			let promptWithActions: String = await ActionManager.shared.findActions(text: text)
+			var finalPrompt: String = text
+			if UserDefaults.standard.bool(forKey: "useActions") {
+				finalPrompt = await ActionManager.shared.findActions(
+					text: finalPrompt
+				)
+			}
 			// Send back on main thread
-			record.text = promptWithActions
+			record.text = finalPrompt
 			await MainActor.run {
 				do {
 					try ctx.save()

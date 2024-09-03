@@ -11,6 +11,8 @@ struct BottomToolbarPanel: View {
 	
 	@EnvironmentObject var conversationController: ConversationController
 	
+	@AppStorage("useActions") var useActions: Bool = false
+	
 	@Binding var selectedDir: IndexedDirectory?
 	
 	var body: some View {
@@ -50,23 +52,7 @@ struct BottomToolbarPanel: View {
 				.font(.title2)
 			Divider()
 			Form {
-				Section {
-					HStack {
-						VStack(alignment: .leading) {
-							Text("Actions (Beta)")
-								.font(.title3)
-								.bold()
-							Text("Add or remove actions")
-								.font(.caption)
-						}
-						Spacer()
-						Button("Manage") {
-							OpenWindow.actions.open()
-						}
-					}
-				} header: {
-					Text("Automation")
-				}
+				actions
 				Section {
 					Toggle(isOn: $conversationController.readAloud, label: {
 						VStack(alignment: .leading) {
@@ -85,6 +71,29 @@ struct BottomToolbarPanel: View {
 			
 		}
 		.formStyle(.grouped)
+	}
+	
+	var actions: some View {
+		Section {
+			HStack {
+				VStack(alignment: .leading) {
+					Text("Actions (Beta)")
+						.font(.title3)
+						.bold()
+					Text("Add or remove actions")
+						.font(.caption)
+				}
+				Spacer()
+				Toggle("", isOn: $useActions)
+					.toggleStyle(.switch)
+				Button("Manage") {
+					OpenWindow.actions.open()
+				}
+				.disabled(!useActions)
+			}
+		} header: {
+			Text("Automation")
+		}
 	}
 	
 }
