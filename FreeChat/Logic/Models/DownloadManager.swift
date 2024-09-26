@@ -7,10 +7,10 @@
 
 import Foundation
 import OSLog
-import CoreData
 import SwiftUI
 
 class DownloadManager: NSObject, ObservableObject {
+	
 	static var shared = DownloadManager()
 	
 	@AppStorage("selectedModelId") private var selectedModelId: String?
@@ -55,6 +55,7 @@ class DownloadManager: NSObject, ObservableObject {
 }
 
 extension DownloadManager: URLSessionDelegate, URLSessionDownloadDelegate {
+	
 	func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten _: Int64, totalBytesExpectedToWrite _: Int64) {
 		DispatchQueue.main.async {
 			let now = Date()

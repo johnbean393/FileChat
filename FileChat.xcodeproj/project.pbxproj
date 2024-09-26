@@ -22,10 +22,10 @@
 		204242692C0E1CB800D173CF /* LengthyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204242682C0E1CB800D173CF /* LengthyTask.swift */; };
 		2042426B2C0E1D3000D173CF /* LengthyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */; };
 		2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */; };
+		205543072CA4DE6200E4F596 /* filechat-server in Resources */ = {isa = PBXBuildFile; fileRef = 205543062CA4DE6200E4F596 /* filechat-server */; };
 		2078A9442C11598400D9ACDD /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078A9432C11598400D9ACDD /* ConversationController.swift */; };
 		2085D6A92C0FEE5300774EDD /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D6A82C0FEE5300774EDD /* Extension+URL.swift */; };
 		20884D1A2C7DA2BC00B127E1 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 20884D192C7DA2BC00B127E1 /* MarkdownUI */; };
-		20884D1C2C7DB36100B127E1 /* freechat-server in Resources */ = {isa = PBXBuildFile; fileRef = 20884D1B2C7DB36100B127E1 /* freechat-server */; };
 		208D82A02C11842300E8AB01 /* BottomToolbarPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D829F2C11842300E8AB01 /* BottomToolbarPanel.swift */; };
 		209764B72C1205FE001C3BF8 /* CapsuleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209764B62C1205FE001C3BF8 /* CapsuleButtonStyle.swift */; };
 		209764B92C12A98B001C3BF8 /* ActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209764B82C12A98B001C3BF8 /* ActionManager.swift */; };
@@ -154,10 +154,10 @@
 		204242682C0E1CB800D173CF /* LengthyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTask.swift; sourceTree = "<group>"; };
 		2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTasksController.swift; sourceTree = "<group>"; };
 		2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		205543062CA4DE6200E4F596 /* filechat-server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "filechat-server"; sourceTree = "<group>"; };
 		205D22222C10499000C750EF /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		2078A9432C11598400D9ACDD /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 		2085D6A82C0FEE5300774EDD /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
-		20884D1B2C7DB36100B127E1 /* freechat-server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "freechat-server"; sourceTree = "<group>"; };
 		208D829F2C11842300E8AB01 /* BottomToolbarPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToolbarPanel.swift; sourceTree = "<group>"; };
 		209764B62C1205FE001C3BF8 /* CapsuleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButtonStyle.swift; sourceTree = "<group>"; };
 		209764B82C12A98B001C3BF8 /* ActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionManager.swift; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 				A17A2E122A79A005006CDD90 /* Agent.swift */,
 				A17A2E132A79A005006CDD90 /* LlamaServer.swift */,
 				DEEA39CB2B586F3800992592 /* ServerHealth.swift */,
-				20884D1B2C7DB36100B127E1 /* freechat-server */,
+				205543062CA4DE6200E4F596 /* filechat-server */,
 				A1A286F32A7E17750004967A /* server-watchdog */,
 				A1D4B49C2B9A780B00B9C4BE /* AgentDefaults.swift */,
 			);
@@ -669,7 +669,7 @@
 			files = (
 				A1F6172D2A782AA200F2048C /* Preview Assets.xcassets in Resources */,
 				A1F6172A2A782AA200F2048C /* Assets.xcassets in Resources */,
-				20884D1C2C7DB36100B127E1 /* freechat-server in Resources */,
+				205543072CA4DE6200E4F596 /* filechat-server in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

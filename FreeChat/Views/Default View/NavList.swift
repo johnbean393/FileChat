@@ -25,7 +25,11 @@ struct NavList: View {
 	@FocusState var fieldFocused
 	
 	var body: some View {
-		List(items, id: \.self, selection: $selection) { item in
+		List(
+			items,
+			id: \.self,
+			selection: $selection
+		) { item in
 			if editing == item {
 				TextField(item.titleWithDefault, text: $newTitle)
 					.textFieldStyle(.plain)
