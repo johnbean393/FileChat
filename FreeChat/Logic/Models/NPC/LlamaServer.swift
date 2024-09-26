@@ -110,7 +110,7 @@ actor LlamaServer {
 		
 		let startTime = DispatchTime.now()
 		
-		process.executableURL = Bundle.main.resourceURL?.appendingPathComponent("filechat-server")
+		process.executableURL = Bundle.main.resourceURL?.appendingPathComponent("freechat-server")
 		
 		let processes = ProcessInfo.processInfo.activeProcessorCount
 		

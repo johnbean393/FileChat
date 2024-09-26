@@ -22,7 +22,6 @@
 		204242692C0E1CB800D173CF /* LengthyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204242682C0E1CB800D173CF /* LengthyTask.swift */; };
 		2042426B2C0E1D3000D173CF /* LengthyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */; };
 		2042426D2C0E2C2600D173CF /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */; };
-		205543072CA4DE6200E4F596 /* filechat-server in Resources */ = {isa = PBXBuildFile; fileRef = 205543062CA4DE6200E4F596 /* filechat-server */; };
 		2078A9442C11598400D9ACDD /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078A9432C11598400D9ACDD /* ConversationController.swift */; };
 		2085D6A92C0FEE5300774EDD /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D6A82C0FEE5300774EDD /* Extension+URL.swift */; };
 		20884D1A2C7DA2BC00B127E1 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 20884D192C7DA2BC00B127E1 /* MarkdownUI */; };
@@ -37,6 +36,7 @@
 		209764CD2C12D713001C3BF8 /* NewActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209764CC2C12D713001C3BF8 /* NewActionSheet.swift */; };
 		209764CF2C12E551001C3BF8 /* ActionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209764CE2C12E551001C3BF8 /* ActionDetailView.swift */; };
 		209764D12C132F2A001C3BF8 /* ActionTestInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209764D02C132F2A001C3BF8 /* ActionTestInputView.swift */; };
+		20A60F172CA58F5C008C1091 /* freechat-server in Resources */ = {isa = PBXBuildFile; fileRef = 20A60F162CA58F5C008C1091 /* freechat-server */; };
 		20A9AE272C11FEF8005B15E6 /* ChatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9AE262C11FEF8005B15E6 /* ChatStyle.swift */; };
 		20C3ED8A2C116D6F00097FBF /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 20C3ED892C116D6F00097FBF /* Shimmer */; };
 		A1156D312AD09FDD00081313 /* PromptTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */; };
@@ -154,7 +154,6 @@
 		204242682C0E1CB800D173CF /* LengthyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTask.swift; sourceTree = "<group>"; };
 		2042426A2C0E1D3000D173CF /* LengthyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthyTasksController.swift; sourceTree = "<group>"; };
 		2042426C2C0E2C2600D173CF /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
-		205543062CA4DE6200E4F596 /* filechat-server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "filechat-server"; sourceTree = "<group>"; };
 		205D22222C10499000C750EF /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		2078A9432C11598400D9ACDD /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 		2085D6A82C0FEE5300774EDD /* Extension+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
@@ -168,6 +167,7 @@
 		209764CC2C12D713001C3BF8 /* NewActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActionSheet.swift; sourceTree = "<group>"; };
 		209764CE2C12E551001C3BF8 /* ActionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDetailView.swift; sourceTree = "<group>"; };
 		209764D02C132F2A001C3BF8 /* ActionTestInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTestInputView.swift; sourceTree = "<group>"; };
+		20A60F162CA58F5C008C1091 /* freechat-server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "freechat-server"; sourceTree = "<group>"; };
 		20A9AE262C11FEF8005B15E6 /* ChatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStyle.swift; sourceTree = "<group>"; };
 		20DF1EC02C0F0D030008D5DA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A1156D302AD09FDD00081313 /* PromptTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTemplateTests.swift; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 				A17A2E122A79A005006CDD90 /* Agent.swift */,
 				A17A2E132A79A005006CDD90 /* LlamaServer.swift */,
 				DEEA39CB2B586F3800992592 /* ServerHealth.swift */,
-				205543062CA4DE6200E4F596 /* filechat-server */,
+				20A60F162CA58F5C008C1091 /* freechat-server */,
 				A1A286F32A7E17750004967A /* server-watchdog */,
 				A1D4B49C2B9A780B00B9C4BE /* AgentDefaults.swift */,
 			);
@@ -668,8 +668,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1F6172D2A782AA200F2048C /* Preview Assets.xcassets in Resources */,
+				20A60F172CA58F5C008C1091 /* freechat-server in Resources */,
 				A1F6172A2A782AA200F2048C /* Assets.xcassets in Resources */,
-				205543072CA4DE6200E4F596 /* filechat-server in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

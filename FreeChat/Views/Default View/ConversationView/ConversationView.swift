@@ -81,7 +81,7 @@ struct ConversationView: View, Sendable {
 	
 	var body: some View {
 		ObservableScrollView(scrollOffset: $scrollOffset, scrollHeight: $scrollHeight) { proxy in
-			VStack(alignment: .leading) {
+			LazyVStack(alignment: .leading) {
 				ForEach(messages) { m in
 					if m == messages.last! {
 						if m == pendingMessage {
